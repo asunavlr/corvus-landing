@@ -777,7 +777,10 @@ pre code {
 
 .footer__title em {
   font-style: italic;
-  color: var(--fog-3);
+}
+
+.footer__title em.flame {
+  color: transparent;
 }
 
 .footer__install {

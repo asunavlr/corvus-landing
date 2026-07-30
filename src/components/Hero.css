@@ -95,7 +95,11 @@
 
 .hero__title em {
   font-style: italic;
-  color: var(--fog-2);
+}
+
+/* Sem isto, `em` (mais específico) devolvia a cor sólida e apagava o gradiente. */
+.hero__title em.flame {
+  color: transparent;
 }
 
 .hero__lede {
