@@ -1,34 +1,20 @@
 import { motion } from "motion/react";
-import { VERIFY } from "../data/content";
+import { useCopy } from "../content";
 import { inView, inViewSoft, rise, riseSmall, stagger } from "../lib/motion";
 
-/** Um relatório de verificação como o agente devolve — a prova, não a promessa. */
-const REPORT = [
-  { status: "ok", route: "/login", note: "200 · formulário preenchido, sessão criada" },
-  { status: "ok", route: "/clientes", note: "200 · 42 linhas na tabela" },
-  { status: "warn", route: "/relatorios", note: "200 · console: Warning sobre chave duplicada" },
-  { status: "fail", route: "/admin/usuarios", note: "401 · voltou para /login" },
-];
-
 export default function Verify() {
+  const copy = useCopy();
+  const report = copy.verify.report;
   return (
     <section className="section" id="verificacao">
       <div className="shell verify">
         <motion.div variants={stagger()} {...inViewSoft}>
-          <motion.p className="eyebrow" variants={riseSmall}>
-            Entrega verificada
-          </motion.p>
-          <motion.h2 className="h2" variants={rise}>
-            “Está funcionando” não é entrega
-          </motion.h2>
-          <motion.p className="lede" variants={rise}>
-            Agente que mexe numa tela e diz que deu certo sem abrir é como o 401 aparece dois
-            minutos depois, do seu lado. No Corvus, mexeu em tela, rota, permissão ou login,
-            alguém abre — e conta o que viu.
-          </motion.p>
+          <motion.p className="eyebrow" variants={riseSmall}>{copy.verify.eyebrow}</motion.p>
+          <motion.h2 className="h2" variants={rise}>{copy.verify.title}</motion.h2>
+          <motion.p className="lede" variants={rise}>{copy.verify.lede}</motion.p>
 
           <motion.div className="verify__list" variants={stagger(0.08, 0.1)}>
-            {VERIFY.map((item) => (
+            {copy.verify.items.map((item) => (
               <motion.div key={item.title} className="verify__item" variants={rise}>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
@@ -39,10 +25,10 @@ export default function Verify() {
 
         <motion.div className="report" variants={stagger(0.08, 0.2)} {...inView}>
           <motion.div className="report__head" variants={riseSmall}>
-            <span className="mono">verificar_no_navegador</span>
-            <span className="report__tag mono">playwright</span>
+            <span className="mono">{report.tool}</span>
+            <span className="report__tag mono">{report.tag}</span>
           </motion.div>
-          {REPORT.map((row) => (
+          {report.rows.map((row) => (
             <motion.div key={row.route} className="report__row" variants={riseSmall}>
               <span className={`report__pip report__pip--${row.status}`} aria-hidden="true" />
               <span className="report__route mono">{row.route}</span>
@@ -50,8 +36,9 @@ export default function Verify() {
             </motion.div>
           ))}
           <motion.p className="report__foot" variants={riseSmall}>
-            Sem esse relato, a demanda fica <strong>travada</strong> com a nota “sem verificação”.
-            Nunca entregue.
+            {report.footA}
+            <strong>{report.footStrong}</strong>
+            {report.footB}
           </motion.p>
         </motion.div>
       </div>

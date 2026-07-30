@@ -4,7 +4,11 @@ import Footer from "./components/Footer";
 import Guard from "./components/Guard";
 import Hero from "./components/Hero";
 import Nav from "./components/Nav";
+import Network from "./components/Network";
 import Orchestration from "./components/Orchestration";
+import Pricing from "./components/Pricing";
+import Proxy from "./components/Proxy";
+import Shots from "./components/Shots";
 import Stack from "./components/Stack";
 import Tools from "./components/Tools";
 import Verify from "./components/Verify";
@@ -16,6 +20,9 @@ export default function App() {
       <Nav />
       <main id="top">
         <Hero />
+        <Proxy />
+        <Shots />
+        <Network />
         <Features />
         <Orchestration />
         <Verify />
@@ -23,6 +30,7 @@ export default function App() {
         <Tools />
         <ApiReference />
         <Stack />
+        <Pricing />
       </main>
       <Footer />
     </>

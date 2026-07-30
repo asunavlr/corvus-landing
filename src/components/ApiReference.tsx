@@ -1,35 +1,26 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
-import { API, API_TOTAL } from "../data/content";
+import { useCopy } from "../content";
 import { ease, inViewSoft, rise, riseSmall, stagger } from "../lib/motion";
 
-/** A superfície HTTP inteira do Corvus, agrupada como ela existe no App Router. */
+/** A superfície HTTP inteira do proxy, agrupada como ela existe no App Router. */
 export default function ApiReference() {
-  const [active, setActive] = useState(API[0].id);
-  const group = API.find((g) => g.id === active) ?? API[0];
+  const copy = useCopy();
+  const [active, setActive] = useState(copy.api.groups[0].id);
+  const group = copy.api.groups.find((g) => g.id === active) ?? copy.api.groups[0];
 
   return (
     <section className="section section--tinted" id="api">
       <div className="shell">
         <motion.div variants={stagger()} {...inViewSoft}>
-          <motion.p className="eyebrow" variants={riseSmall}>
-            Referência de API
-          </motion.p>
-          <motion.h2 className="h2" variants={rise}>
-            {API_TOTAL} rotas, todas locais
-          </motion.h2>
-          <motion.p className="lede" variants={rise}>
-            Rotas de API do Next em runtime Node, chamadas pela interface, pelo servidor MCP e
-            pelo hook de guarda. Não há autenticação: o Corvus é uma ferramenta de máquina única
-            — <code className="mono">/api/fs</code> lista o seu disco e{" "}
-            <code className="mono">/api/chats/[id]/stream</code> executa a CLI. Não exponha essa
-            porta na rede.
-          </motion.p>
+          <motion.p className="eyebrow" variants={riseSmall}>{copy.api.eyebrow}</motion.p>
+          <motion.h2 className="h2" variants={rise}>{copy.api.title}</motion.h2>
+          <motion.p className="lede" variants={rise}>{copy.api.lede}</motion.p>
         </motion.div>
 
         <motion.div className="api" variants={stagger(0.06, 0.1)} {...inViewSoft}>
           <motion.div className="api__tabs" role="tablist" variants={riseSmall}>
-            {API.map((item) => (
+            {copy.api.groups.map((item) => (
               <button
                 key={item.id}
                 role="tab"

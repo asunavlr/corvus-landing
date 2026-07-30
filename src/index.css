@@ -1,30 +1,46 @@
 /* ---------------------------------------------------------------------------
    Corvus — landing
-   Uma paleta só: névoa sobre tinta. O verde aparece pouco, e sempre significa
-   a mesma coisa — algo vivo, rodando agora.
+   A paleta é a do próprio cockpit: tinta quase preta, e o calor do corvo —
+   raven, sheen, plume — sempre como brilho, nunca como área chapada.
 --------------------------------------------------------------------------- */
 
 :root {
-  --ink: #08090b;
-  --ink-2: #0d0f13;
-  --ink-3: #12151a;
-  --line: #1e222a;
-  --line-2: #2a2f39;
+  --void: #06060a;
+  --ink: #0b0b12;
+  --panel: #101018;
+  --panel-2: #16161f;
+  --line: #1e1e2a;
+  --line-2: #2b2b3a;
 
-  --fog: #e8eaed;
-  --fog-2: #a8aeb8;
-  --fog-3: #6f7580;
+  --raven: #ef4444;
+  --sheen: #f97316;
+  --plume: #fb923c;
+  --ember: #fdba74;
+  --blush: #fca5a5;
 
-  --live: #4ade80;
-  --live-dim: rgba(74, 222, 128, 0.13);
+  --fog: #e7e7ef;
+  --fog-2: #a5a5b8;
+  --fog-3: #6d6d80;
+
+  /* Estado, não marca: verde é "passou", âmbar é "olha isso", vermelho é "falhou". */
+  --live: #34d399;
   --warn: #fbbf24;
+  --fail: #f87171;
 
   --serif: "Instrument Serif", Georgia, serif;
   --sans: "Inter", system-ui, -apple-system, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-  --page: 1120px;
+  --page: 1160px;
   --gutter: clamp(1.25rem, 5vw, 3rem);
+
+  /* O brilho do produto, em três intensidades. */
+  --glow-soft: 0 0 30px -6px rgb(249 115 22 / 0.35);
+  --glow: 0 0 44px -8px rgb(249 115 22 / 0.55);
+  --glow-hard:
+    0 0 0 1px rgb(249 115 22 / 0.28),
+    0 0 34px -4px rgb(249 115 22 / 0.45),
+    0 0 90px -20px rgb(239 68 68 / 0.4);
 
   color-scheme: dark;
 }
@@ -41,7 +57,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--ink);
+  background: var(--void);
   color: var(--fog);
   font-family: var(--sans);
   font-size: 16px;
@@ -50,8 +66,19 @@ body {
   overflow-x: hidden;
 }
 
-/* Um ruído fino por cima de tudo: sem ele, um fundo tão escuro ganha faixas
-   de banding nos gradientes. */
+/* As brasas de fundo: os mesmos radiais que o cockpit tem por cima da foto. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60rem 40rem at 12% -6%, rgb(239 68 68 / 0.1), transparent 60%),
+    radial-gradient(50rem 36rem at 96% 12%, rgb(249 115 22 / 0.08), transparent 62%),
+    radial-gradient(44rem 30rem at 50% 108%, rgb(251 146 60 / 0.07), transparent 65%);
+}
+
 body::after {
   content: "";
   position: fixed;
@@ -86,14 +113,16 @@ img {
 }
 
 ::selection {
-  background: var(--live);
-  color: var(--ink);
+  background: rgb(239 68 68 / 0.4);
+  color: #fff;
 }
 
 :focus-visible {
-  outline: 2px solid var(--live);
-  outline-offset: 3px;
-  border-radius: 4px;
+  outline: none;
+  box-shadow:
+    0 0 0 1px rgb(239 68 68 / 0.6),
+    0 0 0 4px rgb(239 68 68 / 0.15);
+  border-radius: 6px;
 }
 
 /* ------------------------------- primitivas ------------------------------ */
@@ -115,7 +144,7 @@ img {
   font-size: 0.7rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--fog-3);
+  color: var(--plume);
   display: flex;
   align-items: center;
   gap: 0.7rem;
@@ -125,13 +154,21 @@ img {
   content: "";
   width: 1.6rem;
   height: 1px;
-  background: var(--line-2);
+  background: linear-gradient(90deg, var(--sheen), transparent);
 }
 
 .h2 {
   font-size: clamp(2.1rem, 5.2vw, 3.4rem);
   margin-top: 1.4rem;
-  max-width: 20ch;
+  max-width: 22ch;
+}
+
+/* O mesmo gradiente de texto do cockpit. */
+.flame {
+  background: linear-gradient(120deg, var(--blush) 0%, #f87171 35%, var(--ember) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .lede {
@@ -143,13 +180,6 @@ img {
 
 .mono {
   font-family: var(--mono);
-}
-
-.rule {
-  height: 1px;
-  border: 0;
-  margin: 0;
-  background: linear-gradient(90deg, transparent, var(--line), transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {

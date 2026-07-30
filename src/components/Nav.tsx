@@ -1,16 +1,10 @@
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useState } from "react";
-import { REPO } from "../data/content";
-
-const LINKS = [
-  { href: "#recursos", label: "Recursos" },
-  { href: "#orquestracao", label: "Orquestração" },
-  { href: "#mcp", label: "MCP" },
-  { href: "#api", label: "API" },
-];
+import { SPONSOR, useLang } from "../content";
 
 /** Transparente sobre o bando; sólida assim que a página sai do céu. */
 export default function Nav() {
+  const { copy, lang, setLang } = useLang();
   const { scrollY } = useScroll();
   const [solid, setSolid] = useState(false);
   useMotionValueEvent(scrollY, "change", (y) => setSolid(y > 80));
@@ -28,15 +22,36 @@ export default function Nav() {
           <span>Corvus</span>
         </a>
         <ul className="nav__links">
-          {LINKS.map((link) => (
+          {copy.nav.links.map((link) => (
             <li key={link.href}>
               <a href={link.href}>{link.label}</a>
             </li>
           ))}
         </ul>
-        <a className="nav__cta" href={REPO}>
-          GitHub
-        </a>
+        <div className="nav__right">
+          <div className="lang" role="group" aria-label="Idioma / Language">
+            {(["pt", "en"] as const).map((code) => (
+              <button
+                key={code}
+                className={`lang__btn${lang === code ? " lang__btn--on" : ""}`}
+                onClick={() => setLang(code)}
+                aria-pressed={lang === code}
+              >
+                {lang === code && (
+                  <motion.span
+                    className="lang__bg"
+                    layoutId="lang-pill"
+                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                  />
+                )}
+                <span className="lang__label">{code.toUpperCase()}</span>
+              </button>
+            ))}
+          </div>
+          <a className="nav__cta" href={SPONSOR}>
+            {copy.nav.cta}
+          </a>
+        </div>
       </div>
     </motion.nav>
   );

@@ -1,0 +1,74 @@
+.net {
+  margin: 3.5rem 0 0;
+}
+
+.net__frame {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--void);
+  overflow: hidden;
+  box-shadow: var(--glow-soft);
+}
+
+/* O halo do produto: brasa por trás do quadro, não em cima dele. */
+.net__frame::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 14px;
+  pointer-events: none;
+  background:
+    radial-gradient(40rem 20rem at 20% 0%, rgb(239 68 68 / 0.09), transparent 60%),
+    radial-gradient(36rem 18rem at 85% 100%, rgb(249 115 22 / 0.08), transparent 62%);
+}
+
+.net__canvas {
+  display: block;
+  touch-action: none;
+}
+
+.net__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 0 0;
+}
+
+.net__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.78rem;
+  color: var(--fog-3);
+}
+
+.net__legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.net__pip {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.net__hint {
+  font-size: 0.72rem;
+  color: var(--fog-3);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 640px) {
+  .net__foot {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

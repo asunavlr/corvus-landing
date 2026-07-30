@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { FLOW, ORCHESTRATION } from "../data/content";
+import { useCopy } from "../content";
 import { ease, inViewSoft, rise, riseSmall, stagger } from "../lib/motion";
 
 /** A linha que liga os quatro passos se desenha conforme a seção aparece. */
@@ -9,26 +9,19 @@ const line = {
 };
 
 export default function Orchestration() {
+  const copy = useCopy();
   return (
     <section className="section section--tinted" id="orquestracao">
       <div className="shell">
         <motion.div variants={stagger()} {...inViewSoft}>
-          <motion.p className="eyebrow" variants={riseSmall}>
-            Orquestração
-          </motion.p>
-          <motion.h2 className="h2" variants={rise}>
-            Um maestro, vários repositórios
-          </motion.h2>
-          <motion.p className="lede" variants={rise}>
-            Marque uma conversa como maestro e ela ganha um departamento: não edita arquivo
-            nenhum, cria agentes que editam. Cada tarefa vira uma conversa própria na barra
-            lateral, com histórico e sessão inteiros.
-          </motion.p>
+          <motion.p className="eyebrow" variants={riseSmall}>{copy.orchestration.eyebrow}</motion.p>
+          <motion.h2 className="h2" variants={rise}>{copy.orchestration.title}</motion.h2>
+          <motion.p className="lede" variants={rise}>{copy.orchestration.lede}</motion.p>
         </motion.div>
 
         <motion.ol className="flow" variants={stagger(0.12, 0.1)} {...inViewSoft}>
           <motion.span className="flow__line" variants={line} aria-hidden="true" />
-          {FLOW.map((item) => (
+          {copy.orchestration.flow.map((item) => (
             <motion.li key={item.step} className="flow__item" variants={rise}>
               <span className="flow__dot" aria-hidden="true" />
               <p className="flow__step mono">{item.step}</p>
@@ -39,7 +32,7 @@ export default function Orchestration() {
         </motion.ol>
 
         <motion.div className="grid grid--four" variants={stagger(0.07)} {...inViewSoft}>
-          {ORCHESTRATION.map((item) => (
+          {copy.orchestration.cards.map((item) => (
             <motion.article key={item.title} className="card card--quiet" variants={rise}>
               <h3>{item.title}</h3>
               <p>{item.body}</p>

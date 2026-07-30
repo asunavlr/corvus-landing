@@ -1,5 +1,5 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { REPO, STATS } from "../data/content";
+import { SPONSOR, useCopy } from "../content";
 import { ease, rise, stagger } from "../lib/motion";
 import "./Hero.css";
 
@@ -8,6 +8,7 @@ import "./Hero.css";
  * entra invertida — o original é preto sobre névoa clara, e aqui tudo é tinta.
  */
 export default function Hero() {
+  const copy = useCopy();
   const reduced = useReducedMotion();
   const { scrollY } = useScroll();
   const flockY = useTransform(scrollY, [0, 800], [0, reduced ? 0 : 160]);
@@ -29,25 +30,22 @@ export default function Hero() {
       >
         <motion.div className="hero__badge" variants={rise}>
           <span className="hero__pulse" aria-hidden="true" />
-          <span className="mono">front-end para o Claude Code CLI</span>
+          <span className="mono">{copy.hero.badge}</span>
         </motion.div>
 
         <motion.h1 className="hero__title" variants={rise}>
-          Em vez de cinco terminais
+          {copy.hero.titleA}
           <br />
-          abertos, <em>um cockpit só.</em>
+          <em className="flame">{copy.hero.titleEm}</em>
         </motion.h1>
 
         <motion.p className="hero__lede" variants={rise}>
-          O Corvus roda o Claude Code por baixo e devolve o que falta em cima: conversas
-          organizadas por projeto, turnos que sobrevivem ao fechar da aba e um maestro que
-          comanda agentes em vários repositórios ao mesmo tempo — cobrando prova de que a
-          entrega funciona.
+          {copy.hero.lede}
         </motion.p>
 
         <motion.div className="hero__actions" variants={rise}>
-          <a className="btn btn--primary" href={REPO}>
-            Ver no GitHub
+          <a className="btn btn--primary" href={SPONSOR}>
+            {copy.hero.ctaPrimary}
             <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
               <path
                 d="M4 12L12 4M12 4H6M12 4v6"
@@ -59,8 +57,8 @@ export default function Hero() {
               />
             </svg>
           </a>
-          <a className="btn btn--ghost" href="#recursos">
-            O que ele faz
+          <a className="btn btn--ghost" href="#produto">
+            {copy.hero.ctaSecondary}
           </a>
         </motion.div>
 
@@ -69,23 +67,21 @@ export default function Hero() {
             <span />
             <span />
             <span />
-            <p className="mono">um turno, por baixo</p>
+            <p className="mono">{copy.hero.terminalCaption}</p>
           </div>
           <pre className="mono">
             <code>
-              <span className="tok-dim">$</span> claude <span className="tok-flag">-p</span>{" "}
-              <span className="tok-flag">--output-format</span> stream-json{" "}
-              <span className="tok-flag">--include-partial-messages</span>
-              {"\n       "}
-              <span className="tok-flag">--resume</span>{" "}
-              <span className="tok-val">&lt;uuid&gt;</span>{" "}
-              <span className="tok-flag">--permission-mode</span>{" "}
-              <span className="tok-val">acceptEdits</span>
-              {"\n"}
-              {"\n"}
-              <span className="tok-dim">
-                {"# prompt via stdin · NDJSON → SSE · o processo é do servidor, não da aba"}
-              </span>
+              <span className="tok-dim">$</span> npx corvus@latest{" "}
+              <span className="tok-flag">--key</span> <span className="tok-val">CRV-7K2P-9XQM</span>
+              {"\n\n"}
+              {copy.hero.terminalChips.map((chip, i) => (
+                <span key={chip}>
+                  <span className="tok-ok">●</span> {chip}
+                  {i < copy.hero.terminalChips.length - 1 ? "   " : ""}
+                </span>
+              ))}
+              {"\n\n"}
+              <span className="tok-dim">{copy.hero.terminalComment}</span>
             </code>
           </pre>
         </motion.div>
@@ -96,7 +92,7 @@ export default function Hero() {
           initial="hidden"
           animate="show"
         >
-          {STATS.map((stat) => (
+          {copy.hero.stats.map((stat) => (
             <motion.div
               key={stat.label}
               className="hero__stat"
@@ -105,7 +101,7 @@ export default function Hero() {
                 show: { opacity: 1, y: 0, transition: { duration: 0.6, ease } },
               }}
             >
-              <dt>{stat.value}</dt>
+              <dt className="flame">{stat.value}</dt>
               <dd>{stat.label}</dd>
             </motion.div>
           ))}
