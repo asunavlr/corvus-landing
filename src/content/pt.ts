@@ -541,13 +541,14 @@ export const pt = {
 
   pricing: {
     eyebrow: "Preço",
-    title: "Acesso pelo GitHub, no modelo do VectorBT",
+    title: "O código é seu, não um acesso alugado",
     currency: "US$",
     per: "/ mês",
     brl: "cerca de R$ 77 · a cobrança é em dólar, pelo GitHub",
     lede:
-      "O acesso é um patrocínio no GitHub, como o VectorBT faz: ao assinar, você entra como " +
-      "colaborador do repositório privado e recebe a chave de licença.",
+      "O acesso é um patrocínio no GitHub: ao assinar, você entra como colaborador do " +
+      "repositório privado e recebe a chave de licença. Você clona, lê e roda — não é uma " +
+      "conta em servidor de ninguém.",
     bullets: [
       "Código-fonte completo do proxy e do dashboard, no repositório privado.",
       "Atualizações enquanto a assinatura estiver ativa.",

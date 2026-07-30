@@ -861,7 +861,7 @@ pre code {
   position: absolute;
   inset: 0;
   border-radius: 5px;
-  background: linear-gradient(115deg, #ffc46b, #ff8c1a 55%, #ff4d0a);
+  background: var(--flame);
   z-index: 0;
 }
 
@@ -1035,8 +1035,8 @@ pre code {
 }
 
 .api__tab-bg {
-  background: linear-gradient(115deg, #ffc46b, #ff8c1a 55%, #ff4d0a);
-  box-shadow: var(--glow-soft);
+  background: var(--flame);
+  box-shadow: 0 8px 20px -10px rgb(255 106 0 / 0.8);
 }
 
 .api__tab--on .api__tab-label {

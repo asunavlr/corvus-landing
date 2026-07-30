@@ -531,13 +531,14 @@ export const en: Copy = {
 
   pricing: {
     eyebrow: "Pricing",
-    title: "Access through GitHub, VectorBT-style",
+    title: "The code is yours, not rented access",
     currency: "$",
     per: "/ month",
     brl: "about R$ 77 · billed in dollars, through GitHub",
     lede:
-      "Access is a GitHub sponsorship, the way VectorBT does it: subscribing makes you a " +
-      "collaborator on the private repository and sends you the license key.",
+      "Access is a GitHub sponsorship: subscribing makes you a collaborator on the private " +
+      "repository and sends you the license key. You clone it, read it and run it — it is not " +
+      "an account on somebody's server.",
     bullets: [
       "Full source of the proxy and the dashboard, in the private repository.",
       "Updates for as long as the subscription is active.",

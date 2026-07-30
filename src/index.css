@@ -16,7 +16,7 @@
   --sheen: #ff6a00;
   --plume: #ff8c1a;
   --ember: #ffab4a;
-  --blush: #ffc46b;
+  --blush: #ffa01f;
 
   --fog: #e7e7ef;
   --fog-2: #a5a5b8;
@@ -33,6 +33,10 @@
 
   --page: 1160px;
   --gutter: clamp(1.25rem, 5vw, 3rem);
+
+  /* O gradiente da marca, em um lugar só. Começa em laranja cheio: creme claro
+     no primeiro stop lia como "desbotando para o branco". */
+  --flame: linear-gradient(100deg, #ffa01f 0%, #ff6a00 42%, #f5410a 74%, #e01b00 100%);
 
   /* O brilho do produto, em três intensidades. */
   --glow-soft: 0 0 32px -6px rgb(255 106 0 / 0.5);
@@ -166,7 +170,7 @@ img {
 /* O gradiente do cockpit, puxado para o fogo: o original é pastel demais
    para carregar um título. */
 .flame {
-  background: linear-gradient(115deg, #ffc46b 0%, #ff8c1a 38%, #ff4d0a 72%, #f5220c 100%);
+  background: var(--flame);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
