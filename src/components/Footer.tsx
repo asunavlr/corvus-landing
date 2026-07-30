@@ -30,9 +30,14 @@ export default function Footer() {
         </motion.div>
 
         <div className="footer__bar">
-          <p className="mono">Corvus</p>
-          <a className="mono footer__repo" href={REPO}>github.com/asunavlr/corvus</a>
-          <p className="mono">{copy.footer.tagline}</p>
+          <p className="mono">Corvus · {copy.footer.tagline}</p>
+          <a className="mono footer__repo" href={REPO}>
+            github.com/asunavlr/corvus
+          </a>
+          <p className="mono footer__credit">
+            {copy.footer.credit}
+            <span className="footer__version">{copy.footer.version}</span>
+          </p>
         </div>
       </div>
     </footer>

@@ -264,7 +264,7 @@ pre code {
 
 .flow__item:first-child .flow__dot {
   border-color: var(--ember);
-  background: rgb(249 115 22 / 0.14);
+  background: rgb(255 106 0 / 0.14);
 }
 
 .flow__step {
@@ -516,7 +516,7 @@ pre code {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ember);
-  background: rgb(249 115 22 / 0.14);
+  background: rgb(255 106 0 / 0.14);
   border-radius: 100px;
   padding: 0.18rem 0.6rem;
 }
@@ -858,7 +858,7 @@ pre code {
   position: absolute;
   inset: 0;
   border-radius: 5px;
-  background: linear-gradient(120deg, var(--blush), var(--ember));
+  background: linear-gradient(115deg, #ffc46b, #ff8c1a 55%, #ff4d0a);
   z-index: 0;
 }
 
@@ -898,8 +898,8 @@ pre code {
   width: 2.4rem;
   height: 2.4rem;
   border-radius: 9px;
-  border: 1px solid rgb(249 115 22 / 0.3);
-  background: rgb(249 115 22 / 0.08);
+  border: 1px solid rgb(255 106 0 / 0.3);
+  background: rgb(255 106 0 / 0.08);
   color: var(--ember);
   font-size: 0.72rem;
   box-shadow: var(--glow-soft);
@@ -918,7 +918,7 @@ pre code {
 .proxy__note {
   margin-top: 2.4rem;
   padding-left: 1.1rem;
-  border-left: 1px solid rgb(249 115 22 / 0.35);
+  border-left: 1px solid rgb(255 106 0 / 0.35);
   color: var(--fog-3);
   font-size: 0.88rem;
   max-width: 54ch;
@@ -928,7 +928,7 @@ pre code {
 .term {
   position: sticky;
   top: 90px;
-  border: 1px solid rgb(249 115 22 / 0.2);
+  border: 1px solid rgb(255 106 0 / 0.2);
   border-radius: 13px;
   background: var(--void);
   overflow: hidden;
@@ -952,7 +952,7 @@ pre code {
 }
 
 .term__bar span:first-child {
-  background: rgb(239 68 68 / 0.55);
+  background: rgb(245 34 12 / 0.55);
 }
 
 .term__bar p {
@@ -1000,7 +1000,7 @@ pre code {
 
 .term__line--url {
   color: var(--ember);
-  text-shadow: 0 0 18px rgb(251 146 60 / 0.45);
+  text-shadow: 0 0 18px rgb(255 140 26 / 0.45);
 }
 
 .term__line--dim {
@@ -1024,7 +1024,7 @@ pre code {
 
 .card:hover,
 .tool:hover {
-  border-color: rgb(249 115 22 / 0.22);
+  border-color: rgb(255 106 0 / 0.22);
 }
 
 .tools__grid .tool:hover {
@@ -1032,7 +1032,7 @@ pre code {
 }
 
 .api__tab-bg {
-  background: linear-gradient(120deg, var(--blush), var(--ember));
+  background: linear-gradient(115deg, #ffc46b, #ff8c1a 55%, #ff4d0a);
   box-shadow: var(--glow-soft);
 }
 
@@ -1056,4 +1056,19 @@ pre code {
 
 .footer__bar {
   flex-wrap: wrap;
+}
+
+.footer__credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.footer__version {
+  padding: 0.1rem 0.45rem;
+  border-radius: 100px;
+  border: 1px solid rgb(255 106 0 / 0.35);
+  background: rgb(255 106 0 / 0.1);
+  color: var(--ember);
+  font-size: 0.68rem;
 }

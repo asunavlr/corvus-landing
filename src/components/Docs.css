@@ -1,0 +1,156 @@
+.docs {
+  margin-top: 3.5rem;
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.docs__label {
+  font-size: 1.05rem;
+  color: var(--fog-2);
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 1.2rem;
+}
+
+.docs__prompts {
+  display: flex;
+  flex-direction: column;
+}
+
+.prompt {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  overflow: hidden;
+  margin-bottom: 0.9rem;
+  transition: border-color 0.25s ease;
+}
+
+.prompt:hover {
+  border-color: rgb(255 106 0 / 0.25);
+}
+
+.prompt__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.2rem;
+}
+
+.prompt__head h4 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.prompt__hint {
+  margin-top: 0.25rem;
+  font-size: 0.82rem;
+  color: var(--fog-3);
+}
+
+.prompt__copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid rgb(255 106 0 / 0.35);
+  background: rgb(255 106 0 / 0.1);
+  color: var(--ember);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+}
+
+.prompt__copy:hover {
+  background: rgb(255 106 0 / 0.18);
+  border-color: rgb(255 106 0 / 0.6);
+  box-shadow: var(--glow-soft);
+}
+
+.prompt__copy--done {
+  color: var(--live);
+  border-color: rgb(52 211 153 / 0.5);
+  background: rgb(52 211 153 / 0.12);
+  box-shadow: none;
+}
+
+.prompt__body {
+  margin: 0;
+  padding: 1.1rem 1.2rem 1.3rem;
+  border-top: 1px solid var(--line);
+  background: var(--void);
+  font-size: 0.76rem;
+  line-height: 1.85;
+  color: var(--fog-3);
+  white-space: pre-wrap;
+  max-height: 12.5rem;
+  overflow-y: auto;
+}
+
+/* Fora da tela, mas selecionável: é o plano B quando a área de transferência
+   é negada (http, navegador antigo, permissão bloqueada). */
+.prompt__fallback {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.docs__ref {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--ink);
+  padding: 1.3rem 1.4rem 1.5rem;
+  position: sticky;
+  top: 90px;
+}
+
+.docs__ref dl {
+  margin: 0;
+}
+
+.docs__row + .docs__row {
+  margin-top: 1.05rem;
+  padding-top: 1.05rem;
+  border-top: 1px solid var(--line);
+}
+
+.docs__row dt {
+  font-size: 0.78rem;
+  color: var(--ember);
+}
+
+.docs__row dd {
+  margin: 0.3rem 0 0;
+  font-size: 0.85rem;
+  color: var(--fog-2);
+}
+
+@media (max-width: 900px) {
+  .docs {
+    grid-template-columns: 1fr;
+  }
+  .docs__ref {
+    position: static;
+  }
+  .prompt__head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -12,11 +12,11 @@
   --line: #1e1e2a;
   --line-2: #2b2b3a;
 
-  --raven: #ef4444;
-  --sheen: #f97316;
-  --plume: #fb923c;
-  --ember: #fdba74;
-  --blush: #fca5a5;
+  --raven: #f5220c;
+  --sheen: #ff6a00;
+  --plume: #ff8c1a;
+  --ember: #ffab4a;
+  --blush: #ffc46b;
 
   --fog: #e7e7ef;
   --fog-2: #a5a5b8;
@@ -35,12 +35,12 @@
   --gutter: clamp(1.25rem, 5vw, 3rem);
 
   /* O brilho do produto, em três intensidades. */
-  --glow-soft: 0 0 30px -6px rgb(249 115 22 / 0.35);
-  --glow: 0 0 44px -8px rgb(249 115 22 / 0.55);
+  --glow-soft: 0 0 32px -6px rgb(255 106 0 / 0.5);
+  --glow: 0 0 50px -8px rgb(255 106 0 / 0.75);
   --glow-hard:
-    0 0 0 1px rgb(249 115 22 / 0.28),
-    0 0 34px -4px rgb(249 115 22 / 0.45),
-    0 0 90px -20px rgb(239 68 68 / 0.4);
+    0 0 0 1px rgb(255 106 0 / 0.42),
+    0 0 38px -4px rgb(255 106 0 / 0.6),
+    0 0 100px -20px rgb(245 34 12 / 0.55);
 
   color-scheme: dark;
 }
@@ -74,9 +74,9 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(60rem 40rem at 12% -6%, rgb(239 68 68 / 0.1), transparent 60%),
-    radial-gradient(50rem 36rem at 96% 12%, rgb(249 115 22 / 0.08), transparent 62%),
-    radial-gradient(44rem 30rem at 50% 108%, rgb(251 146 60 / 0.07), transparent 65%);
+    radial-gradient(60rem 40rem at 12% -6%, rgb(245 34 12 / 0.16), transparent 60%),
+    radial-gradient(50rem 36rem at 96% 12%, rgb(255 106 0 / 0.13), transparent 62%),
+    radial-gradient(44rem 30rem at 50% 108%, rgb(255 140 26 / 0.12), transparent 65%);
 }
 
 body::after {
@@ -113,15 +113,15 @@ img {
 }
 
 ::selection {
-  background: rgb(239 68 68 / 0.4);
+  background: rgb(255 106 0 / 0.45);
   color: #fff;
 }
 
 :focus-visible {
   outline: none;
   box-shadow:
-    0 0 0 1px rgb(239 68 68 / 0.6),
-    0 0 0 4px rgb(239 68 68 / 0.15);
+    0 0 0 1px rgb(255 106 0 / 0.75),
+    0 0 0 4px rgb(255 106 0 / 0.2);
   border-radius: 6px;
 }
 
@@ -163,9 +163,10 @@ img {
   max-width: 22ch;
 }
 
-/* O mesmo gradiente de texto do cockpit. */
+/* O gradiente do cockpit, puxado para o fogo: o original é pastel demais
+   para carregar um título. */
 .flame {
-  background: linear-gradient(120deg, var(--blush) 0%, #f87171 35%, var(--ember) 100%);
+  background: linear-gradient(115deg, #ffc46b 0%, #ff8c1a 38%, #ff4d0a 72%, #f5220c 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;

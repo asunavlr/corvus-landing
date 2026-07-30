@@ -10,6 +10,7 @@ export const en: Copy = {
       { href: "#rede", label: "Network" },
       { href: "#mcp", label: "MCP" },
       { href: "#api", label: "API" },
+      { href: "#docs", label: "Docs" },
       { href: "#preco", label: "Pricing" },
     ],
     cta: "Subscribe",
@@ -127,7 +128,7 @@ export const en: Copy = {
       "Folders hold conversations, conversations command agents, agents spawn subagents. All " +
       "of it becomes a navigable constellation — like Obsidian's graph, except the nodes are " +
       "working. Drag to arrange; a spark travels the link wherever work is really flowing.",
-    hint: "drag the nodes · hover to isolate",
+    hint: "drag the nodes · tap to isolate",
     legend: [
       { kind: "project", label: "project" },
       { kind: "orchestrator", label: "conductor" },
@@ -456,6 +457,78 @@ export const en: Copy = {
     eventsLabel: "Stream events",
   },
 
+  docs: {
+    eyebrow: "Documentation",
+    title: "Claude is the one who teaches you Corvus",
+    lede:
+      "The repository ships with a README, a CLAUDE.md and code commented end to end — " +
+      "written to be read by an agent. Instead of digging through it yourself, copy one of " +
+      "the prompts below, paste it into Claude Code inside the Corvus folder, and ask. It " +
+      "reads the right files and sets you up.",
+    copy: "Copy prompt",
+    copied: "Copied",
+    promptsTitle: "Ready-made prompts",
+    refTitle: "Quick reference",
+    prompts: [
+      {
+        title: "First run",
+        hint: "installs, validates the key and opens the dashboard",
+        text:
+          "I am setting up Corvus, a local proxy that runs the Claude Code CLI and serves a " +
+          "dashboard in the browser. Read README.md and src/lib/claude.ts in this repository " +
+          "before answering.\n\nHelp me: 1) confirm the Claude Code CLI is installed and " +
+          "authenticated on this machine; 2) start the proxy; 3) open the dashboard and create " +
+          "my first project pointing at one of my repositories.\n\nGo one step at a time, " +
+          "give me the exact command to run, and wait for me to confirm the result before " +
+          "moving on. If something fails, diagnose from the error message instead of guessing.",
+      },
+      {
+        title: "Set up the conductor",
+        hint: "the conversation that commands agents across repositories",
+        text:
+          "I am using Corvus. I want to set up a conversation as the conductor: it edits no " +
+          "files, it creates agents that do, one per folder.\n\nRead src/lib/orchestrator.ts, " +
+          "src/lib/situation.ts and the MANAGER_PROMPT constant in src/lib/claude.ts to " +
+          "understand how the board, the demands and the queue work.\n\nThen explain to me, " +
+          "practically: how to mark a conversation as the conductor, how it decides what to " +
+          "delegate, what demands and standing orders are, and which concurrency limits I " +
+          "should use for my projects. Ask me how many repositories I have and how many agents " +
+          "I want running at once before recommending numbers.",
+      },
+      {
+        title: "Tune the brakes",
+        hint: "what runs on its own and what stops to ask",
+        text:
+          "I am using Corvus, which runs Claude Code in bypassPermissions with a PreToolUse " +
+          "hook that stops only destructive commands.\n\nRead scripts/corvus-guard.mjs and the " +
+          "buildArgs function in src/lib/claude.ts.\n\nExplain exactly what is blocked today " +
+          "and what goes straight through, and help me decide whether to turn on turbo with " +
+          "brakes. If I want to add a pattern to the dangerous-command list, show me where and " +
+          "how, with an example from my own case.",
+      },
+      {
+        title: "Something broke",
+        hint: "proxy won't start, agent vanishes, question never arrives",
+        text:
+          "I have a problem with Corvus. Before answering, read README.md, src/lib/engine.ts " +
+          "(turn lifecycle), src/lib/runtime.ts (processes) and " +
+          "src/app/api/chats/[id]/stream/route.ts.\n\nWhat is happening to me: " +
+          "[DESCRIBE HERE]\n\nDiagnose from the code and the logs, not from assumption. If you " +
+          "need something from my machine (Node version, the output of a command, the contents " +
+          "of the database in ~/.corvus), ask for one thing at a time. Do not change any file " +
+          "before explaining the cause to me.",
+      },
+    ],
+    reference: [
+      { term: "CORVUS_HOME", desc: "Where corvus.db and the backups live. Default: ~/.corvus" },
+      { term: "CORVUS_CLAUDE_BIN", desc: "Path to the Claude Code executable, when detection fails" },
+      { term: "Permission modes", desc: "accept edits, automatic, plan, don't ask, no restrictions" },
+      { term: "Turbo with brakes", desc: "Runs in bypass, but the hook stops what destroys work" },
+      { term: "Queue limits", desc: "How many agents at once, and how many per folder" },
+      { term: "Cleanup", desc: "Archives or deletes worker conversations idle for N days" },
+    ],
+  },
+
   pricing: {
     eyebrow: "Pricing",
     title: "Access through GitHub, VectorBT-style",
@@ -490,5 +563,7 @@ export const en: Copy = {
       "not delete the original CLI session on disk.",
     cta: "Subscribe for $15/month",
     tagline: "a cockpit for Claude Code",
+    credit: "made by Christofer and Kevin",
+    version: "v1.0",
   },
 };

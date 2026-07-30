@@ -19,8 +19,8 @@
   border-radius: 14px;
   pointer-events: none;
   background:
-    radial-gradient(40rem 20rem at 20% 0%, rgb(239 68 68 / 0.09), transparent 60%),
-    radial-gradient(36rem 18rem at 85% 100%, rgb(249 115 22 / 0.08), transparent 62%);
+    radial-gradient(40rem 20rem at 20% 0%, rgb(245 34 12 / 0.09), transparent 60%),
+    radial-gradient(36rem 18rem at 85% 100%, rgb(255 106 0 / 0.08), transparent 62%);
 }
 
 .net__canvas {

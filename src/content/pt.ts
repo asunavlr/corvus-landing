@@ -20,6 +20,7 @@ export const pt = {
       { href: "#rede", label: "Rede" },
       { href: "#mcp", label: "MCP" },
       { href: "#api", label: "API" },
+      { href: "#docs", label: "Docs" },
       { href: "#preco", label: "Preço" },
     ],
     cta: "Assinar",
@@ -137,7 +138,7 @@ export const pt = {
       "Tudo isso vira uma constelação navegável — como o grafo do Obsidian, só que os nós " +
       "estão trabalhando. Arraste para organizar; a faísca percorre a ligação por onde há " +
       "trabalho passando de verdade.",
-    hint: "arraste os nós · passe o mouse para isolar",
+    hint: "arraste os nós · toque para isolar",
     legend: [
       { kind: "project", label: "projeto" },
       { kind: "orchestrator", label: "maestro" },
@@ -465,6 +466,79 @@ export const pt = {
     eventsLabel: "Eventos do stream",
   },
 
+  docs: {
+    eyebrow: "Documentação",
+    title: "Quem te ensina o Corvus é o Claude",
+    lede:
+      "O repositório vem com README, CLAUDE.md e um código comentado de ponta a ponta — " +
+      "escrito para ser lido por agente. Em vez de você garimpar tudo isso, copie um dos " +
+      "prompts abaixo, cole no Claude Code dentro da pasta do Corvus e peça. Ele lê os " +
+      "arquivos certos e te configura.",
+    copy: "Copiar prompt",
+    copied: "Copiado",
+    promptsTitle: "Prompts prontos",
+    refTitle: "Referência rápida",
+    prompts: [
+      {
+        title: "Subir pela primeira vez",
+        hint: "instala, valida a chave e abre o dashboard",
+        text:
+          "Estou configurando o Corvus, um proxy local que roda o Claude Code CLI e serve um " +
+          "dashboard no navegador. Leia o README.md e o src/lib/claude.ts deste repositório " +
+          "antes de responder.\n\nMe ajude a: 1) confirmar que o Claude Code CLI está " +
+          "instalado e autenticado nesta máquina; 2) subir o proxy; 3) abrir o dashboard e " +
+          "criar meu primeiro projeto apontando para a pasta de um repositório meu.\n\n" +
+          "Vá um passo por vez, me diga o comando exato a rodar e espere eu confirmar o " +
+          "resultado antes de seguir. Se algo falhar, diagnostique pela mensagem de erro em " +
+          "vez de chutar.",
+      },
+      {
+        title: "Montar o maestro",
+        hint: "a conversa que comanda agentes em vários repositórios",
+        text:
+          "Estou usando o Corvus. Quero configurar uma conversa como maestro: ela não edita " +
+          "arquivos, ela cria agentes que editam, um por pasta.\n\nLeia src/lib/orchestrator.ts, " +
+          "src/lib/situation.ts e a constante MANAGER_PROMPT em src/lib/claude.ts para entender " +
+          "como o quadro, as demandas e a fila funcionam.\n\nDepois me explique, na prática: " +
+          "como marcar uma conversa como maestro, como ele decide o que delegar, o que são " +
+          "demandas e ordens permanentes, e quais limites de concorrência eu deveria usar para " +
+          "os meus projetos. Pergunte quantos repositórios eu tenho e quantos agentes quero " +
+          "rodando ao mesmo tempo antes de recomendar os números.",
+      },
+      {
+        title: "Ajustar o freio",
+        hint: "o que roda sozinho e o que para para pedir permissão",
+        text:
+          "Estou usando o Corvus, que roda o Claude Code em bypassPermissions com um hook " +
+          "PreToolUse que barra só comandos destrutivos.\n\nLeia scripts/corvus-guard.mjs e a " +
+          "função buildArgs em src/lib/claude.ts.\n\nMe explique exatamente o que hoje é " +
+          "barrado e o que passa direto, e me ajude a decidir se devo ligar o modo turbo com " +
+          "freio. Se eu quiser acrescentar um padrão à lista de comandos perigosos, me mostre " +
+          "onde e como, com um exemplo do meu caso.",
+      },
+      {
+        title: "Algo não funcionou",
+        hint: "proxy não sobe, agente some, pergunta não chega",
+        text:
+          "Estou com um problema no Corvus. Antes de responder, leia o README.md, " +
+          "src/lib/engine.ts (ciclo de vida do turno), src/lib/runtime.ts (processos) e " +
+          "src/app/api/chats/[id]/stream/route.ts.\n\nO que está acontecendo comigo: " +
+          "[DESCREVA AQUI]\n\nDiagnostique pelo código e pelos logs, não por suposição. Se " +
+          "precisar de uma informação da minha máquina (versão do Node, saída de um comando, " +
+          "conteúdo do banco em ~/.corvus), peça uma coisa de cada vez. Não altere arquivo " +
+          "nenhum antes de me explicar a causa.",
+      },
+    ],
+    reference: [
+      { term: "CORVUS_HOME", desc: "Onde ficam o corvus.db e os backups. Padrão: ~/.corvus" },
+      { term: "CORVUS_CLAUDE_BIN", desc: "Caminho do executável do Claude Code, quando a detecção falhar" },
+      { term: "Modos de permissão", desc: "aceitar edições, automático, plano, não perguntar, sem restrições" },
+      { term: "Turbo com freio", desc: "Roda em bypass, mas o hook barra o que destrói trabalho" },
+      { term: "Limites da fila", desc: "Quantos agentes ao mesmo tempo, e quantos por pasta" },
+      { term: "Limpeza", desc: "Arquiva ou apaga conversas de trabalho paradas há N dias" },
+    ],
+  },
+
   pricing: {
     eyebrow: "Preço",
     title: "Acesso pelo GitHub, no modelo do VectorBT",
@@ -499,6 +573,8 @@ export const pt = {
       "CLI no disco.",
     cta: "Assinar por US$ 15/mês",
     tagline: "um cockpit para o Claude Code",
+    credit: "feito por Christofer e Kevin",
+    version: "v1.0",
   },
 };
 

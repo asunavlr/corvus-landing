@@ -31,10 +31,16 @@ export default function Shots() {
               className={`shot${i === 0 ? " shot--lead" : ""}`}
               variants={rise}
             >
-              <button className="shot__frame" onClick={() => setZoom(item.src)}>
-                <img src={item.src} alt={item.title} loading="lazy" />
-                <span className="shot__zoom mono">↗</span>
-              </button>
+              <div className="shot__media">
+                <button className="shot__frame" onClick={() => setZoom(item.src)}>
+                  <img src={item.src} alt={item.title} loading="lazy" />
+                </button>
+                {/* Fora do contêiner que rola: dentro dele, o selo ia junto com
+                    a imagem e sumia da vista no celular. */}
+                <span className="shot__zoom mono" aria-hidden="true">
+                  ↗
+                </span>
+              </div>
               <figcaption>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>

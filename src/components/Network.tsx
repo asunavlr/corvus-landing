@@ -53,13 +53,28 @@ const LINKS: Link[] = [
   { a: "t2", b: "s2", kind: "spawns" },
 ];
 
-const W = 900;
-const H = 430;
-
 type Node = Spec & { radius: number; color: string; x: number; y: number; vx: number; vy: number };
+
+/** Abaixo disto, um canvas 900x430 vira uma tira ilegível de 160px de altura. */
+const NARROW = "(max-width: 699px)";
 
 export default function Network() {
   const copy = useCopy();
+  const [narrow, setNarrow] = useState(
+    () => typeof window !== "undefined" && window.matchMedia(NARROW).matches,
+  );
+  // Só reconstrói ao cruzar o limiar — não a cada pixel de redimensionamento.
+  useEffect(() => {
+    const mq = window.matchMedia(NARROW);
+    const sync = () => setNarrow(mq.matches);
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  const W = narrow ? 430 : 900;
+  const H = narrow ? 560 : 430;
+  const labelSize = narrow ? 14 : 11;
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const labelsRef = useRef(copy.network.nodes);
   const [hovered, setHovered] = useState<string | null>(null);
@@ -88,8 +103,8 @@ export default function Network() {
       return {
         ...spec,
         ...STYLE[spec.kind],
-        x: W / 2 + Math.cos(angle) * 300 + (i % 3) * 12,
-        y: H / 2 + Math.sin(angle) * 150 + (i % 4) * 9,
+        x: W / 2 + Math.cos(angle) * W * 0.33 + (i % 3) * 12,
+        y: H / 2 + Math.sin(angle) * H * 0.35 + (i % 4) * 9,
         vx: 0,
         vy: 0,
       };
@@ -149,7 +164,8 @@ export default function Network() {
         }
         node.vx *= 0.84;
         node.vy *= 0.84;
-        node.x = Math.max(node.radius + 60, Math.min(W - node.radius - 60, node.x + node.vx));
+        const pad = narrow ? 34 : 60;
+        node.x = Math.max(node.radius + pad, Math.min(W - node.radius - pad, node.x + node.vx));
         node.y = Math.max(node.radius + 26, Math.min(H - node.radius - 26, node.y + node.vy));
       }
       cooling = Math.max(0.12, cooling * 0.994);
@@ -241,10 +257,14 @@ export default function Network() {
         ctx.fill();
 
         const label = (labelsRef.current as Record<string, string>)[node.labelKey] ?? node.id;
-        ctx.font = "500 11px Inter, system-ui, sans-serif";
+        ctx.font = `500 ${labelSize}px Inter, system-ui, sans-serif`;
         ctx.textAlign = "center";
         ctx.fillStyle = dim ? "rgba(231,231,239,0.28)" : "rgba(231,231,239,0.82)";
-        ctx.fillText(label, node.x, node.y + node.radius + 15);
+        // O rótulo é mais largo que o nó: sem prender, some metade dele na
+        // borda do quadro — o que aparece primeiro na tela estreita do celular.
+        const half = ctx.measureText(label).width / 2 + 6;
+        const lx = Math.max(half, Math.min(W - half, node.x));
+        ctx.fillText(label, lx, node.y + node.radius + labelSize + 4);
         ctx.globalAlpha = 1;
       }
     };
@@ -320,7 +340,7 @@ export default function Network() {
       canvas.removeEventListener("pointerup", onUp);
       canvas.removeEventListener("pointerleave", onLeave);
     };
-  }, []);
+  }, [W, H, labelSize]);
 
   return (
     <section className="section section--tinted" id="rede">

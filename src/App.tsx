@@ -1,4 +1,5 @@
 import ApiReference from "./components/ApiReference";
+import Docs from "./components/Docs";
 import Features from "./components/Features";
 import Footer from "./components/Footer";
 import Guard from "./components/Guard";
@@ -30,6 +31,7 @@ export default function App() {
         <Tools />
         <ApiReference />
         <Stack />
+        <Docs />
         <Pricing />
       </main>
       <Footer />
