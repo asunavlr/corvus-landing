@@ -1,0 +1,165 @@
+/* ---------------------------------------------------------------------------
+   Corvus — landing
+   Uma paleta só: névoa sobre tinta. O verde aparece pouco, e sempre significa
+   a mesma coisa — algo vivo, rodando agora.
+--------------------------------------------------------------------------- */
+
+:root {
+  --ink: #08090b;
+  --ink-2: #0d0f13;
+  --ink-3: #12151a;
+  --line: #1e222a;
+  --line-2: #2a2f39;
+
+  --fog: #e8eaed;
+  --fog-2: #a8aeb8;
+  --fog-3: #6f7580;
+
+  --live: #4ade80;
+  --live-dim: rgba(74, 222, 128, 0.13);
+  --warn: #fbbf24;
+
+  --serif: "Instrument Serif", Georgia, serif;
+  --sans: "Inter", system-ui, -apple-system, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --page: 1120px;
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--fog);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Um ruído fino por cima de tudo: sem ele, um fundo tão escuro ganha faixas
+   de banding nos gradientes. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: var(--live);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--live);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ------------------------------- primitivas ------------------------------ */
+
+.shell {
+  width: 100%;
+  max-width: var(--page);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: clamp(5rem, 12vw, 9rem);
+  position: relative;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fog-3);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 1.6rem;
+  height: 1px;
+  background: var(--line-2);
+}
+
+.h2 {
+  font-size: clamp(2.1rem, 5.2vw, 3.4rem);
+  margin-top: 1.4rem;
+  max-width: 20ch;
+}
+
+.lede {
+  color: var(--fog-2);
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
+  max-width: 62ch;
+  margin-top: 1.5rem;
+}
+
+.mono {
+  font-family: var(--mono);
+}
+
+.rule {
+  height: 1px;
+  border: 0;
+  margin: 0;
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
