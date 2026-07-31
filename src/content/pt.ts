@@ -35,7 +35,7 @@ export const pt = {
       "Conversas organizadas por projeto, turnos que sobrevivem ao fechar da aba e um " +
       "maestro que comanda agentes em vários repositórios ao mesmo tempo — cobrando prova " +
       "de que a entrega funciona.",
-    ctaPrimary: "Assinar por US$ 15/mês",
+    ctaPrimary: "Assinar por US$ 15",
     ctaSecondary: "Ver como funciona",
     terminalCaption: "um comando, e o cockpit está no ar",
     terminalChips: ["proxy · 127.0.0.1:3210", "claude cli", "licença ok"],
@@ -572,7 +572,7 @@ export const pt = {
       "Precisa do Claude Code CLI instalado e autenticado. O banco fica em ~/.corvus/corvus.db " +
       "— sobrescreva com CORVUS_HOME. Apagar uma conversa aqui não apaga a sessão original da " +
       "CLI no disco.",
-    cta: "Assinar por US$ 15/mês",
+    cta: "Assinar por US$ 15",
     tagline: "um cockpit para o Claude Code",
     credit: "feito por Christofer e Kevin",
     version: "v1.0",

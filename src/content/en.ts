@@ -25,7 +25,7 @@ export const en: Copy = {
       "browser. Conversations filed by project, turns that outlive the tab you closed, and a " +
       "conductor that commands agents across several repositories at once — demanding proof " +
       "that the work actually works.",
-    ctaPrimary: "Subscribe for $15/month",
+    ctaPrimary: "Subscribe for $15",
     ctaSecondary: "See how it works",
     terminalCaption: "one command, and the cockpit is up",
     terminalChips: ["proxy · 127.0.0.1:3210", "claude cli", "license ok"],
@@ -562,7 +562,7 @@ export const en: Copy = {
       "You need the Claude Code CLI installed and authenticated. The database lives in " +
       "~/.corvus/corvus.db — override it with CORVUS_HOME. Deleting a conversation here does " +
       "not delete the original CLI session on disk.",
-    cta: "Subscribe for $15/month",
+    cta: "Subscribe for $15",
     tagline: "a cockpit for Claude Code",
     credit: "made by Christofer and Kevin",
     version: "v1.0",
