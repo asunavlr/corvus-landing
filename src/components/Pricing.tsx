@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { PRICE_USD, SPONSOR, useCopy } from "../content";
+import { PRICE_USD, REPO_TRIAL, SPONSOR, useCopy } from "../content";
 import { inViewSoft, rise, riseSmall, stagger } from "../lib/motion";
 import "./Pricing.css";
 
@@ -19,6 +19,33 @@ export default function Pricing() {
         </motion.div>
 
         <motion.div className="price" variants={stagger(0.08, 0.1)} {...inViewSoft}>
+          {/* O teste primeiro: é por onde todo mundo entra. */}
+          <motion.div className="price__card price__card--trial" variants={rise}>
+            <p className="price__tag">
+              <span className="price__value price__value--trial">{copy.pricing.trial.price}</span>
+              <span className="price__per">{copy.pricing.trial.per}</span>
+            </p>
+            <p className="price__brl mono">{copy.pricing.trial.note}</p>
+            <pre className="price__cmd mono">
+              <code>
+                <span className="tok-dim">$</span> npx corvus-trial
+              </code>
+            </pre>
+            <ul className="price__list">
+              {copy.pricing.trial.bullets.map((item, i) => (
+                <li key={i}>
+                  <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true">
+                    <path d="M3 8.5l3.2 3.2L13 5" stroke="currentColor" strokeWidth="1.9" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <a className="btn btn--ghost price__cta" href={REPO_TRIAL}>
+              {copy.pricing.trial.cta}
+            </a>
+          </motion.div>
+
           <motion.div className="price__card" variants={rise}>
             <p className="price__tag">
               <span className="price__currency">{copy.pricing.currency}</span>

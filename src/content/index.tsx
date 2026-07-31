@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState, type ReactNode
 import { pt, type Copy } from "./pt";
 import { en } from "./en";
 
-export { REPO, SPONSOR, PRICE_USD, PRICE_BRL } from "./pt";
+export { REPO_TRIAL, SPONSOR, PRICE_USD, PRICE_BRL } from "./pt";
 export type { Copy };
 
 export type Lang = "pt" | "en";

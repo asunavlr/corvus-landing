@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { REPO, SPONSOR, useCopy } from "../content";
+import { REPO_TRIAL, SPONSOR, useCopy } from "../content";
 import { inViewSoft, rise, riseSmall, stagger } from "../lib/motion";
 
 export default function Footer() {
@@ -15,9 +15,8 @@ export default function Footer() {
           <motion.div className="footer__install" variants={rise}>
             <pre className="mono">
               <code>
-                <span className="tok-dim">$</span> npx corvus@latest{" "}
-                <span className="tok-flag">--key</span>{" "}
-                <span className="tok-val">CRV-7K2P-9XQM</span>
+                <span className="tok-dim">$</span> npx{" "}
+                <span className="tok-val">corvus-trial</span>
                 {"\n"}
                 <span className="tok-dim">{"# → http://localhost:3210"}</span>
               </code>
@@ -31,8 +30,8 @@ export default function Footer() {
 
         <div className="footer__bar">
           <p className="mono">Corvus · {copy.footer.tagline}</p>
-          <a className="mono footer__repo" href={REPO}>
-            github.com/asunavlr/corvus
+          <a className="mono footer__repo" href={REPO_TRIAL}>
+            github.com/asunavlr/corvus-trial
           </a>
           <p className="mono footer__credit">
             {copy.footer.credit}

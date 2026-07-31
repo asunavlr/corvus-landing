@@ -110,3 +110,54 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* A grade vira três colunas: teste, assinatura e a nota do "e se eu parar de
+   pagar". O teste vem primeiro porque é por onde todo mundo entra. */
+.price {
+  grid-template-columns: 0.9fr 1.1fr 0.8fr;
+}
+
+.price__card--trial {
+  border-color: var(--line);
+  background: var(--ink);
+  box-shadow: none;
+}
+
+.price__card--trial .price__list li {
+  font-size: 0.88rem;
+}
+
+.price__value--trial {
+  font-size: clamp(2.6rem, 6vw, 3.6rem);
+  color: var(--fog);
+}
+
+.price__cmd {
+  margin: 1.4rem 0 0;
+  padding: 0.8rem 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--void);
+  font-size: 0.8rem;
+  overflow-x: auto;
+}
+
+.price__card--trial .price__cta {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 1080px) {
+  .price {
+    grid-template-columns: 1fr 1fr;
+  }
+  .price__keep {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 720px) {
+  .price {
+    grid-template-columns: 1fr;
+  }
+}

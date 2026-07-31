@@ -5,8 +5,9 @@
  * Rotas, ferramentas e comandos vieram do código do Corvus, não de memória.
  */
 
-export const REPO = "https://github.com/asunavlr/corvus";
 export const SPONSOR = "https://github.com/sponsors/asunavlr";
+/** A vitrine pública do teste — onde o `npx corvus-trial` mora. */
+export const REPO_TRIAL = "https://github.com/asunavlr/corvus-trial";
 export const PRICE_USD = 15;
 /** Cotação de 30/07/2026; a cobrança é em dólar, o real é só referência. */
 export const PRICE_BRL = 77;
@@ -35,10 +36,10 @@ export const pt = {
       "Conversas organizadas por projeto, turnos que sobrevivem ao fechar da aba e um " +
       "maestro que comanda agentes em vários repositórios ao mesmo tempo — cobrando prova " +
       "de que a entrega funciona.",
-    ctaPrimary: "Assinar por US$ 15",
-    ctaSecondary: "Ver como funciona",
+    ctaPrimary: "Testar 7 dias grátis",
+    ctaSecondary: "Ver o preço",
     terminalCaption: "um comando, e o cockpit está no ar",
-    terminalChips: ["proxy · 127.0.0.1:3210", "claude cli", "licença ok"],
+    terminalChips: ["proxy · 127.0.0.1:3210", "claude cli", "teste · 7 dias"],
     terminalComment: "# o dashboard abre no navegador · nada sai da sua máquina",
     stats: [
       { value: "29", label: "rotas de API" },
@@ -84,7 +85,7 @@ export const pt = {
     terminal: {
       caption: "o proxy no ar",
       lines: [
-        { kind: "cmd", text: "npx corvus@latest --key CRV-7K2P-9XQM" },
+        { kind: "cmd", text: "npx corvus-trial" },
         { kind: "blank", text: "" },
         { kind: "ok", text: "proxy no ar        127.0.0.1:3210" },
         { kind: "ok", text: "licença ok         1 máquina de 3" },
@@ -541,6 +542,19 @@ export const pt = {
 
   pricing: {
     eyebrow: "Preço",
+    trial: {
+      title: "Teste",
+      price: "grátis",
+      per: "7 dias",
+      cta: "Começar agora",
+      note: "sem cartão, sem cadastro — só o comando",
+      bullets: [
+        "Tudo que a versão paga faz, com limites.",
+        "300 chamadas de ferramenta, 10 tarefas, 2 agentes ao mesmo tempo.",
+        "1 projeto e 5 verificações no navegador.",
+        "Acabou o teste? Você continua lendo tudo que já fez.",
+      ],
+    },
     title: "O código é seu, não um acesso alugado",
     currency: "US$",
     per: "/ mês",

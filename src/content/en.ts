@@ -25,10 +25,10 @@ export const en: Copy = {
       "browser. Conversations filed by project, turns that outlive the tab you closed, and a " +
       "conductor that commands agents across several repositories at once — demanding proof " +
       "that the work actually works.",
-    ctaPrimary: "Subscribe for $15",
-    ctaSecondary: "See how it works",
+    ctaPrimary: "Try it free for 7 days",
+    ctaSecondary: "See pricing",
     terminalCaption: "one command, and the cockpit is up",
-    terminalChips: ["proxy · 127.0.0.1:3210", "claude cli", "license ok"],
+    terminalChips: ["proxy · 127.0.0.1:3210", "claude cli", "trial · 7 days"],
     terminalComment: "# the dashboard opens in your browser · nothing leaves your machine",
     stats: [
       { value: "29", label: "API routes" },
@@ -75,7 +75,7 @@ export const en: Copy = {
     terminal: {
       caption: "the proxy, running",
       lines: [
-        { kind: "cmd", text: "npx corvus@latest --key CRV-7K2P-9XQM" },
+        { kind: "cmd", text: "npx corvus-trial" },
         { kind: "blank", text: "" },
         { kind: "ok", text: "proxy up           127.0.0.1:3210" },
         { kind: "ok", text: "license ok         1 of 3 machines" },
@@ -531,6 +531,19 @@ export const en: Copy = {
 
   pricing: {
     eyebrow: "Pricing",
+    trial: {
+      title: "Trial",
+      price: "free",
+      per: "7 days",
+      cta: "Start now",
+      note: "no card, no signup — just the command",
+      bullets: [
+        "Everything the paid version does, with limits.",
+        "300 tool calls, 10 tasks, 2 agents at a time.",
+        "1 project and 5 browser checks.",
+        "Trial over? You keep reading everything you did.",
+      ],
+    },
     title: "The code is yours, not rented access",
     currency: "$",
     per: "/ month",

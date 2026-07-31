@@ -1,5 +1,5 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { SPONSOR, useCopy } from "../content";
+import { REPO_TRIAL, useCopy } from "../content";
 import { ease, rise, stagger } from "../lib/motion";
 import "./Hero.css";
 
@@ -44,7 +44,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.div className="hero__actions" variants={rise}>
-          <a className="btn btn--primary" href={SPONSOR}>
+          <a className="btn btn--primary" href={REPO_TRIAL}>
             {copy.hero.ctaPrimary}
             <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
               <path
@@ -57,7 +57,7 @@ export default function Hero() {
               />
             </svg>
           </a>
-          <a className="btn btn--ghost" href="#produto">
+          <a className="btn btn--ghost" href="#preco">
             {copy.hero.ctaSecondary}
           </a>
         </motion.div>
@@ -71,8 +71,7 @@ export default function Hero() {
           </div>
           <pre className="mono">
             <code>
-              <span className="tok-dim">$</span> npx corvus@latest{" "}
-              <span className="tok-flag">--key</span> <span className="tok-val">CRV-7K2P-9XQM</span>
+              <span className="tok-dim">$</span> npx <span className="tok-val">corvus-trial</span>
               {"\n\n"}
               {copy.hero.terminalChips.map((chip, i) => (
                 <span key={i}>
