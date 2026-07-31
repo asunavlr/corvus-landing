@@ -30,8 +30,8 @@ export default function Tools() {
             <div className="tools__grid">
               {copy.tools.items
                 .filter((tool) => tool.group === group)
-                .map((tool) => (
-                  <motion.article key={tool.name} className="tool" variants={riseSmall}>
+                .map((tool, i) => (
+                  <motion.article key={i} className="tool" variants={riseSmall}>
                     <p className="tool__name mono">{tool.name}</p>
                     <p className="tool__body">{tool.body}</p>
                   </motion.article>

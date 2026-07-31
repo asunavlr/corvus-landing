@@ -19,8 +19,8 @@ export default function Stack() {
         </motion.div>
 
         <motion.div className="grid grid--three" variants={stagger(0.06, 0.1)} {...inViewSoft}>
-          {copy.stack.items.map((item) => (
-            <motion.div key={item.name} className="stack__item" variants={rise}>
+          {copy.stack.items.map((item, i) => (
+            <motion.div key={i} className="stack__item" variants={rise}>
               <p className="stack__name">{item.name}</p>
               <p className="stack__role">{item.role}</p>
             </motion.div>

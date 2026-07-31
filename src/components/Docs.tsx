@@ -50,7 +50,7 @@ export default function Docs() {
             </motion.h3>
 
             {copy.docs.prompts.map((prompt, index) => (
-              <motion.article key={prompt.title} className="prompt" variants={rise}>
+              <motion.article key={index} className="prompt" variants={rise}>
                 <header className="prompt__head">
                   <div>
                     <h4>{prompt.title}</h4>
@@ -115,8 +115,8 @@ export default function Docs() {
               {copy.docs.refTitle}
             </motion.h3>
             <dl>
-              {copy.docs.reference.map((item) => (
-                <motion.div key={item.term} className="docs__row" variants={riseSmall}>
+              {copy.docs.reference.map((item, i) => (
+                <motion.div key={i} className="docs__row" variants={riseSmall}>
                   <dt className="mono">{item.term}</dt>
                   <dd>{item.desc}</dd>
                 </motion.div>

@@ -26,8 +26,8 @@ export default function Proxy() {
           </motion.p>
 
           <motion.ol className="steps" variants={stagger(0.09, 0.1)}>
-            {copy.proxy.steps.map((step) => (
-              <motion.li key={step.step} className="steps__item" variants={rise}>
+            {copy.proxy.steps.map((step, i) => (
+              <motion.li key={i} className="steps__item" variants={rise}>
                 <span className="steps__num mono">{step.step}</span>
                 <div>
                   <h3>{step.title}</h3>

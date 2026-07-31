@@ -14,8 +14,8 @@ export default function Features() {
         </motion.div>
 
         <motion.div className="grid grid--features" variants={stagger(0.07, 0.1)} {...inViewSoft}>
-          {copy.features.items.map((feature) => (
-            <motion.article key={feature.title} className="card" variants={rise}>
+          {copy.features.items.map((feature, i) => (
+            <motion.article key={i} className="card" variants={rise}>
               <h3>{feature.title}</h3>
               <p>{feature.body}</p>
               <p className="card__detail mono">{feature.detail}</p>

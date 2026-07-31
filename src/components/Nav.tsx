@@ -30,6 +30,13 @@ export default function Nav() {
         </ul>
         <div className="nav__right">
           <div className="lang" role="group" aria-label="Idioma / Language">
+            {/* Uma pílula só, que desliza entre as duas metades. */}
+            <motion.span
+              className="lang__bg"
+              aria-hidden="true"
+              animate={{ x: lang === "pt" ? "0%" : "100%" }}
+              transition={{ type: "spring", stiffness: 420, damping: 34 }}
+            />
             {(["pt", "en"] as const).map((code) => (
               <button
                 key={code}
@@ -37,14 +44,7 @@ export default function Nav() {
                 onClick={() => setLang(code)}
                 aria-pressed={lang === code}
               >
-                {lang === code && (
-                  <motion.span
-                    className="lang__bg"
-                    layoutId="lang-pill"
-                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                  />
-                )}
-                <span className="lang__label">{code.toUpperCase()}</span>
+                {code.toUpperCase()}
               </button>
             ))}
           </div>

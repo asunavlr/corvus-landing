@@ -14,8 +14,8 @@ export default function Verify() {
           <motion.p className="lede" variants={rise}>{copy.verify.lede}</motion.p>
 
           <motion.div className="verify__list" variants={stagger(0.08, 0.1)}>
-            {copy.verify.items.map((item) => (
-              <motion.div key={item.title} className="verify__item" variants={rise}>
+            {copy.verify.items.map((item, i) => (
+              <motion.div key={i} className="verify__item" variants={rise}>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
               </motion.div>
@@ -28,8 +28,8 @@ export default function Verify() {
             <span className="mono">{report.tool}</span>
             <span className="report__tag mono">{report.tag}</span>
           </motion.div>
-          {report.rows.map((row) => (
-            <motion.div key={row.route} className="report__row" variants={riseSmall}>
+          {report.rows.map((row, i) => (
+            <motion.div key={i} className="report__row" variants={riseSmall}>
               <span className={`report__pip report__pip--${row.status}`} aria-hidden="true" />
               <span className="report__route mono">{row.route}</span>
               <span className="report__note">{row.note}</span>

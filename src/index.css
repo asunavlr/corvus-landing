@@ -12,11 +12,11 @@
   --line: #1e1e2a;
   --line-2: #2b2b3a;
 
-  --raven: #f5220c;
-  --sheen: #ff6a00;
-  --plume: #ff8c1a;
-  --ember: #ffab4a;
-  --blush: #ffa01f;
+  --raven: #c9130a;
+  --sheen: #ff2400;
+  --plume: #ff4a2b;
+  --ember: #ff8163;
+  --blush: #ff6a45;
 
   --fog: #e7e7ef;
   --fog-2: #a5a5b8;
@@ -36,15 +36,15 @@
 
   /* O gradiente da marca, em um lugar só. Começa em laranja cheio: creme claro
      no primeiro stop lia como "desbotando para o branco". */
-  --flame: linear-gradient(100deg, #ffa01f 0%, #ff6a00 42%, #f5410a 74%, #e01b00 100%);
+  --flame: linear-gradient(100deg, #ff7a4f 0%, #ff3b12 40%, #ec1505 74%, #b8100a 100%);
 
   /* O brilho do produto, em três intensidades. */
-  --glow-soft: 0 0 32px -6px rgb(255 106 0 / 0.5);
-  --glow: 0 0 50px -8px rgb(255 106 0 / 0.75);
+  --glow-soft: 0 0 32px -6px rgb(255 36 0 / 0.5);
+  --glow: 0 0 50px -8px rgb(255 36 0 / 0.75);
   --glow-hard:
-    0 0 0 1px rgb(255 106 0 / 0.42),
-    0 0 38px -4px rgb(255 106 0 / 0.6),
-    0 0 100px -20px rgb(245 34 12 / 0.55);
+    0 0 0 1px rgb(255 36 0 / 0.42),
+    0 0 38px -4px rgb(255 36 0 / 0.6),
+    0 0 100px -20px rgb(201 19 10 / 0.55);
 
   color-scheme: dark;
 }
@@ -78,9 +78,9 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(60rem 40rem at 12% -6%, rgb(245 34 12 / 0.16), transparent 60%),
-    radial-gradient(50rem 36rem at 96% 12%, rgb(255 106 0 / 0.13), transparent 62%),
-    radial-gradient(44rem 30rem at 50% 108%, rgb(255 140 26 / 0.12), transparent 65%);
+    radial-gradient(60rem 40rem at 12% -6%, rgb(201 19 10 / 0.16), transparent 60%),
+    radial-gradient(50rem 36rem at 96% 12%, rgb(255 36 0 / 0.13), transparent 62%),
+    radial-gradient(44rem 30rem at 50% 108%, rgb(255 74 43 / 0.12), transparent 65%);
 }
 
 body::after {
@@ -117,15 +117,15 @@ img {
 }
 
 ::selection {
-  background: rgb(255 106 0 / 0.45);
+  background: rgb(255 36 0 / 0.45);
   color: #fff;
 }
 
 :focus-visible {
   outline: none;
   box-shadow:
-    0 0 0 1px rgb(255 106 0 / 0.75),
-    0 0 0 4px rgb(255 106 0 / 0.2);
+    0 0 0 1px rgb(255 36 0 / 0.75),
+    0 0 0 4px rgb(255 36 0 / 0.2);
   border-radius: 6px;
 }
 

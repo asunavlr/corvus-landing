@@ -28,8 +28,8 @@ export default function Pricing() {
             <p className="price__brl mono">{copy.pricing.brl}</p>
             <p className="price__lede">{copy.pricing.lede}</p>
             <ul className="price__list">
-              {copy.pricing.bullets.map((item) => (
-                <li key={item}>
+              {copy.pricing.bullets.map((item, i) => (
+                <li key={i}>
                   <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true">
                     <path
                       d="M3 8.5l3.2 3.2L13 5"

@@ -27,7 +27,7 @@ export default function Shots() {
         <motion.div className="shots" variants={stagger(0.1, 0.1)} {...inViewSoft}>
           {copy.shots.items.map((item, i) => (
             <motion.figure
-              key={item.src}
+              key={i}
               className={`shot${i === 0 ? " shot--lead" : ""}`}
               variants={rise}
             >

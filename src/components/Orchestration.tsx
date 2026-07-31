@@ -21,8 +21,8 @@ export default function Orchestration() {
 
         <motion.ol className="flow" variants={stagger(0.12, 0.1)} {...inViewSoft}>
           <motion.span className="flow__line" variants={line} aria-hidden="true" />
-          {copy.orchestration.flow.map((item) => (
-            <motion.li key={item.step} className="flow__item" variants={rise}>
+          {copy.orchestration.flow.map((item, i) => (
+            <motion.li key={i} className="flow__item" variants={rise}>
               <span className="flow__dot" aria-hidden="true" />
               <p className="flow__step mono">{item.step}</p>
               <h3>{item.title}</h3>
@@ -32,8 +32,8 @@ export default function Orchestration() {
         </motion.ol>
 
         <motion.div className="grid grid--four" variants={stagger(0.07)} {...inViewSoft}>
-          {copy.orchestration.cards.map((item) => (
-            <motion.article key={item.title} className="card card--quiet" variants={rise}>
+          {copy.orchestration.cards.map((item, i) => (
+            <motion.article key={i} className="card card--quiet" variants={rise}>
               <h3>{item.title}</h3>
               <p>{item.body}</p>
             </motion.article>

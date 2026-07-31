@@ -35,7 +35,7 @@
 
 .shot__frame:hover {
   transform: translateY(-3px);
-  border-color: rgb(255 106 0 / 0.35);
+  border-color: rgb(255 36 0 / 0.35);
   box-shadow: var(--glow);
 }
 

@@ -15,8 +15,8 @@ export default function Guard() {
         </motion.div>
 
         <motion.ul className="guard__list" variants={stagger(0.06, 0.15)} {...inViewSoft}>
-          {copy.guard.samples.map((sample) => (
-            <motion.li key={sample.cmd} className="guard__row" variants={riseSmall}>
+          {copy.guard.samples.map((sample, i) => (
+            <motion.li key={i} className="guard__row" variants={riseSmall}>
               <span className="guard__stop" aria-hidden="true">
                 <svg viewBox="0 0 14 14" width="11" height="11">
                   <path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />

@@ -54,7 +54,7 @@ export default function ApiReference() {
                 <ul className="api__routes">
                   {group.routes.map((route, index) => (
                     <motion.li
-                      key={route.path}
+                      key={index}
                       className="api__route"
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}

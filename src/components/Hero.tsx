@@ -75,7 +75,7 @@ export default function Hero() {
               <span className="tok-flag">--key</span> <span className="tok-val">CRV-7K2P-9XQM</span>
               {"\n\n"}
               {copy.hero.terminalChips.map((chip, i) => (
-                <span key={chip}>
+                <span key={i}>
                   <span className="tok-ok">●</span> {chip}
                   {i < copy.hero.terminalChips.length - 1 ? "   " : ""}
                 </span>
@@ -92,9 +92,9 @@ export default function Hero() {
           initial="hidden"
           animate="show"
         >
-          {copy.hero.stats.map((stat) => (
+          {copy.hero.stats.map((stat, i) => (
             <motion.div
-              key={stat.label}
+              key={i}
               className="hero__stat"
               variants={{
                 hidden: { opacity: 0, y: 14 },
