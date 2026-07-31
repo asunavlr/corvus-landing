@@ -61,15 +61,15 @@ export const pt = {
         step: "01",
         title: "Assine no GitHub",
         body:
-          "O patrocínio te adiciona como colaborador do repositório privado e te dá a chave " +
-          "de licença por e-mail.",
+          "O patrocínio te dá acesso de leitura ao repositório privado, com o código " +
+          "completo. Não existe chave para guardar nem perder.",
       },
       {
         step: "02",
         title: "Rode o proxy",
         body:
-          "Um comando, sem instalar nada. Ele detecta o Claude Code que você já tem, valida " +
-          "a chave e sobe o servidor local.",
+          "Um comando, sem instalar nada. Ele detecta o Claude Code que você já tem e sobe " +
+          "o servidor local.",
       },
       {
         step: "03",
@@ -560,9 +560,9 @@ export const pt = {
     per: "/ mês",
     brl: "cerca de R$ 77 · a cobrança é em dólar, pelo GitHub",
     lede:
-      "O acesso é um patrocínio no GitHub: ao assinar, você entra como colaborador do " +
-      "repositório privado e recebe a chave de licença. Você clona, lê e roda — não é uma " +
-      "conta em servidor de ninguém.",
+      "O acesso é um patrocínio no GitHub: ao assinar, você entra no repositório privado, " +
+      "clona e roda. Não há chave, não há login, não há verificação online — rodando do " +
+      "repositório, o Corvus não fala com servidor nosso em momento nenhum.",
     bullets: [
       "Código-fonte completo do proxy e do dashboard, no repositório privado.",
       "Atualizações enquanto a assinatura estiver ativa.",

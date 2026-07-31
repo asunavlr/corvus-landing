@@ -51,15 +51,15 @@ export const en: Copy = {
         step: "01",
         title: "Subscribe on GitHub",
         body:
-          "Sponsoring adds you as a collaborator on the private repository and sends your " +
-          "license key by e-mail.",
+          "Sponsoring gives you read access to the private repository, with the full source. " +
+          "There is no key to keep or lose.",
       },
       {
         step: "02",
         title: "Run the proxy",
         body:
-          "One command, nothing to install. It finds the Claude Code you already have, " +
-          "validates the key and starts the local server.",
+          "One command, nothing to install. It finds the Claude Code you already have and " +
+          "starts the local server.",
       },
       {
         step: "03",
@@ -549,9 +549,9 @@ export const en: Copy = {
     per: "/ month",
     brl: "about R$ 77 · billed in dollars, through GitHub",
     lede:
-      "Access is a GitHub sponsorship: subscribing makes you a collaborator on the private " +
-      "repository and sends you the license key. You clone it, read it and run it — it is not " +
-      "an account on somebody's server.",
+      "Access is a GitHub sponsorship: subscribing gets you into the private repository — " +
+      "you clone it and run it. No key, no login, no online check: running from the repo, " +
+      "Corvus never talks to a server of ours.",
     bullets: [
       "Full source of the proxy and the dashboard, in the private repository.",
       "Updates for as long as the subscription is active.",
