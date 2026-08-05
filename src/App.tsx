@@ -1,6 +1,7 @@
 import ApiReference from "./components/ApiReference";
 import Docs from "./components/Docs";
 import Features from "./components/Features";
+import Feedback from "./components/Feedback";
 import Footer from "./components/Footer";
 import Guard from "./components/Guard";
 import Hero from "./components/Hero";
@@ -12,6 +13,7 @@ import Proxy from "./components/Proxy";
 import Shots from "./components/Shots";
 import Stack from "./components/Stack";
 import Tools from "./components/Tools";
+import Updates from "./components/Updates";
 import Verify from "./components/Verify";
 import "./components/sections.css";
 
@@ -23,6 +25,8 @@ export default function App() {
         <Hero />
         <Proxy />
         <Shots />
+        <Updates />
+        <Feedback />
         <Network />
         <Features />
         <Orchestration />

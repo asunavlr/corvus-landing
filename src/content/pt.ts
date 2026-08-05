@@ -18,6 +18,7 @@ export const pt = {
   nav: {
     links: [
       { href: "#produto", label: "Produto" },
+      { href: "#atualizacoes", label: "Novidades" },
       { href: "#rede", label: "Rede" },
       { href: "#mcp", label: "MCP" },
       { href: "#api", label: "API" },
@@ -589,7 +590,7 @@ export const pt = {
     cta: "Assinar por US$ 15",
     tagline: "um cockpit para o Claude Code",
     credit: "feito por Christofer e Kevin",
-    version: "v1.0",
+    version: "v1.0.3",
   },
 };
 

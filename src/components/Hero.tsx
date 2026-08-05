@@ -31,6 +31,7 @@ export default function Hero() {
         <motion.div className="hero__badge" variants={rise}>
           <span className="hero__pulse" aria-hidden="true" />
           <span className="mono">{copy.hero.badge}</span>
+          <span className="hero__version mono">v1.0.3</span>
         </motion.div>
 
         <motion.h1 className="hero__title" variants={rise}>

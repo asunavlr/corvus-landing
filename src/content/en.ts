@@ -7,6 +7,7 @@ export const en: Copy = {
   nav: {
     links: [
       { href: "#produto", label: "Product" },
+      { href: "#atualizacoes", label: "Updates" },
       { href: "#rede", label: "Network" },
       { href: "#mcp", label: "MCP" },
       { href: "#api", label: "API" },
@@ -578,6 +579,6 @@ export const en: Copy = {
     cta: "Subscribe for $15",
     tagline: "a cockpit for Claude Code",
     credit: "made by Christofer and Kevin",
-    version: "v1.0",
+    version: "v1.0.3",
   },
 };
