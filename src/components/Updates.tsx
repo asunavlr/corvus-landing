@@ -56,6 +56,12 @@ const copy = {
         body: "Adicione amigos e converse com o Maestro deles para buscar informações, enviar contexto e ajudar a resolver problemas até em projetos que não existem na sua máquina.",
         tags: ["Contexto compartilhado", "Colaboração", "Entre cockpits"],
       },
+      {
+        number: "03",
+        title: "Corvus além do Claude Code",
+        body: "O cockpit se torna multiagente, começando pelo Codex. O Maestro poderá compartilhar contexto, encaminhar tarefas e coordenar diferentes ferramentas de IA em um só lugar.",
+        tags: ["Codex primeiro", "Cockpit multiagente", "Mais integrações"],
+      },
     ],
   },
   en: {
@@ -100,6 +106,12 @@ const copy = {
         title: "A network of Maestros",
         body: "Add friends and talk to their Maestro to retrieve information, send context, and help solve problems even in projects that are not on your machine.",
         tags: ["Shared context", "Collaboration", "Across cockpits"],
+      },
+      {
+        number: "03",
+        title: "Corvus beyond Claude Code",
+        body: "The cockpit becomes multi-agent, starting with Codex. Maestro will share context, route tasks, and coordinate different AI tools in one place.",
+        tags: ["Codex first", "Multi-agent cockpit", "More integrations"],
       },
     ],
   },

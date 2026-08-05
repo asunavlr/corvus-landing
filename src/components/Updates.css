@@ -122,6 +122,11 @@
   background: linear-gradient(145deg, var(--panel), var(--ink));
 }
 
+.roadmap-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  min-height: auto;
+}
+
 .roadmap-card__number { color: var(--plume); font-size: 0.68rem; }
 .roadmap-card h4 { margin: 0; font: 400 clamp(1.3rem, 2.5vw, 1.7rem) / 1.15 var(--serif); }
 .roadmap-card p { margin-top: 1rem; color: var(--fog-2); }
@@ -153,6 +158,7 @@
   .updates__status { grid-column: 2; }
   .updates__roadmap { grid-template-columns: 1fr; }
   .roadmap-card { min-height: auto; }
+  .roadmap-card:last-child:nth-child(odd) { grid-column: auto; }
 }
 
 @media (max-width: 480px) {
