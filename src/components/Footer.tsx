@@ -50,7 +50,6 @@ export default function Footer() {
         <div className="footer__legal mono">
           <a href={copy.footer.legal.privacy.href}>{copy.footer.legal.privacy.label}</a>
           <a href={copy.footer.legal.terms.href}>{copy.footer.legal.terms.label}</a>
-          <a href={`mailto:${copy.footer.legal.email}`}>{copy.footer.legal.email}</a>
         </div>
       </div>
     </footer>

@@ -678,7 +678,6 @@ export const en: Copy = {
     legal: {
       privacy: { href: "/privacy.html", label: "Privacy" },
       terms: { href: "/terms.html", label: "Terms of use" },
-      email: "editorial@agropujante.com.br",
     },
   },
 };
