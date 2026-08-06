@@ -29,52 +29,67 @@ if (!reduced && typeof document !== "undefined") {
 export function initReveal() {
   if (reduced) return () => {};
 
-  let triggers: ScrollTrigger[] = [];
+  const triggers: ScrollTrigger[] = [];
+  /* Quem já foi inscrito não é inscrito de novo. Refazer a fila inteira a cada
+     mudança do DOM era pior que o defeito: os gatilhos morriam e nasciam com a
+     página já rolada, nunca disparavam, e a página inteira ficava escondida. */
+  const inscritos = new WeakSet<Element>();
 
-  /* Registrar de novo, não do zero: kill(false) tira o gatilho antigo sem
-     desfazer o que ele já revelou. Quem já apareceu tem opacity no style e
-     continua visível; quem é novo entra na fila. */
-  const build = () => {
-    triggers.forEach((t) => t.kill(false));
-    triggers = ScrollTrigger.batch("[data-rise]", {
-      start: "top 90%",
-      once: true,
-      onEnter: (batch) =>
-        gsap.to(batch, {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          ease: EASE,
-          stagger: 0.07,
-          overwrite: true,
-        }),
+  const revelar = (alvos: Element[]) =>
+    gsap.to(alvos, {
+      opacity: 1,
+      y: 0,
+      duration: 0.7,
+      ease: EASE,
+      stagger: 0.07,
+      overwrite: true,
     });
+
+  const inscrever = () => {
+    const novos = [...document.querySelectorAll("[data-rise]")].filter(
+      (el) => !inscritos.has(el),
+    );
+    if (!novos.length) return;
+    novos.forEach((el) => inscritos.add(el));
+
+    /* O que já está na tela (ou acima dela) não tem gatilho para esperar: um
+       ScrollTrigger criado depois que a rolagem passou nunca dispara. */
+    const linha = window.innerHeight * 0.9;
+    const agora = novos.filter((el) => el.getBoundingClientRect().top < linha);
+    const depois = novos.filter((el) => el.getBoundingClientRect().top >= linha);
+
+    if (agora.length) revelar(agora);
+    if (depois.length) {
+      triggers.push(
+        ...ScrollTrigger.batch(depois, {
+          start: "top 90%",
+          once: true,
+          onEnter: (batch) => revelar(batch),
+        }),
+      );
+    }
   };
 
-  build();
+  inscrever();
 
   /* Trocar de idioma troca o texto, mas também cria e destrói elementos —
      listas de tamanho diferente entre pt e en, blocos que só existem num dos
-     dois. O ScrollTrigger.batch só conhece o que existia quando foi montado:
-     sem reavaliar, um cartão criado depois fica no estado escondido do CSS
-     para sempre. Foi assim que os cartões sumiam ao trocar de idioma. */
-  let pending = 0;
-  const observer = new MutationObserver(() => {
-    window.clearTimeout(pending);
-    pending = window.setTimeout(() => {
-      build();
-      ScrollTrigger.refresh();
-    }, 120);
+     dois. O que nascesse depois ficava no estado escondido do CSS para sempre,
+     porque a fila só conhecia o que existia quando foi montada. */
+  let pendente = 0;
+  const observador = new MutationObserver(() => {
+    window.clearTimeout(pendente);
+    pendente = window.setTimeout(inscrever, 150);
   });
-  observer.observe(document.body, { childList: true, subtree: true });
+  observador.observe(document.body, { childList: true, subtree: true });
 
   // As imagens chegam depois do primeiro cálculo e empurram a página inteira.
   const onLoad = () => ScrollTrigger.refresh();
   window.addEventListener("load", onLoad);
 
   return () => {
-    window.clearTimeout(pending);
-    observer.disconnect();
+    window.clearTimeout(pendente);
+    observador.disconnect();
     window.removeEventListener("load", onLoad);
     triggers.forEach((t) => t.kill(false));
   };

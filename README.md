@@ -19,10 +19,10 @@ Publicada em <https://corvus-cockpit.vercel.app>.
 | `src/content/en.ts` | O espelho em inglês; falta de chave quebra o build |
 | `src/content/index.tsx` | Provider de idioma, com preferência salva no `localStorage` |
 | `src/components/Network.tsx` | O grafo do produto recriado em canvas, com a mesma física |
-| `src/lib/motion.ts` | Uma curva e um conjunto de variantes para a página inteira |
+| `src/lib/anim.ts` | O vocabulário de movimento: `data-rise` e um revelador de seções em GSAP |
 | `public/images/shot-*.png` | Capturas do produto rodando de verdade, não mockups |
 
-React 19 + TypeScript, Vite e [Motion](https://motion.dev). Sem framework de CSS: são
+React 19 + TypeScript, Vite e [GSAP](https://gsap.com). Sem framework de CSS: são
 variáveis e algumas primitivas (`.shell`, `.section`, `.card`, `.btn`).
 
 ## Idiomas
@@ -40,8 +40,11 @@ ou um endpoint, é em `src/content/`.
   com o laranja sempre como brilho — nunca como área chapada.
 - O grafo assenta antes de aparecer e só então recebe energia de volta; sem isso os nós
   nascem empilhados no meio da tela.
-- Tudo que entra em cena usa `whileInView` com `once: true`, e `prefers-reduced-motion`
-  desliga o paralaxe do hero, a física do grafo e as transições.
+- Tudo que entra em cena é marcado com `data-rise`; um `ScrollTrigger.batch` só revela em
+  fila. O estado escondido é CSS e só existe com a classe `.anim` no `<html>`, então sem JS
+  ou com `prefers-reduced-motion` a página nasce inteira na tela.
+- O revelador reavalia a fila quando o DOM muda: trocar de idioma cria e destrói elementos,
+  e o que nascia depois ficava escondido para sempre.
 - A imagem do bando é a mesma do Corvus, invertida no CSS — o original é preto sobre
   névoa clara, e a página é escura.
 
