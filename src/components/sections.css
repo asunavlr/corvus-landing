@@ -325,6 +325,13 @@ pre code {
   grid-column: span 2;
 }
 
+/* A grade pinta a linha entre os cartões com o próprio fundo. Casa que sobra na
+   última fileira não fica vazia: fica CINZA, do tamanho de um cartão — era o
+   "card sem texto". O último fecha a fileira, seja qual for a contagem. */
+.grid--features > :last-child {
+  grid-column: 1 / -1;
+}
+
 .card--quiet {
   background: var(--panel);
 }

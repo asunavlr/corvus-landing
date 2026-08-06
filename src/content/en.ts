@@ -33,7 +33,7 @@ export const en: Copy = {
   },
 
   hero: {
-    version: "v1.0.3",
+    version: "v1.1.3",
     badge: "local proxy for the Claude Code CLI",
     titleA: "Five terminals open, or",
     titleEm: "one cockpit.",
@@ -666,7 +666,7 @@ export const en: Copy = {
     cta: "Subscribe for $15",
     tagline: "a cockpit for Claude Code",
     credit: "made by Christofer and Kevin",
-    version: "v1.0.3",
+    version: "v1.1.3",
     copyright: "© 2026 Corvus · Windows · Claude Code",
     by: "by",
     quick: [

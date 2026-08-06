@@ -46,7 +46,7 @@ export const pt = {
 
   hero: {
     badge: "proxy local para o Claude Code CLI",
-    version: "v1.0.3",
+    version: "v1.1.3",
     titleA: "Em vez de cinco terminais abertos,",
     titleEm: "um cockpit só.",
     lede:
@@ -680,7 +680,7 @@ export const pt = {
     cta: "Assinar por US$ 15",
     tagline: "um cockpit para o Claude Code",
     credit: "feito por Christofer e Kevin",
-    version: "v1.0.3",
+    version: "v1.1.3",
     copyright: "© 2026 Corvus · Windows · Claude Code",
     by: "por",
     /** Atalhos do rodapé para as seções que não cabem na barra de cima. */

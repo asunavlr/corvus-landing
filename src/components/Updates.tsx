@@ -10,12 +10,33 @@ const copy = {
     shipped: "Já disponível",
     items: [
       {
+        date: "06 AGO 2026",
+        tag: "Segurança",
+        title: "Agora o Corvus tem tranca",
+        body: "Entrar passou a exigir a sua digital ou o seu rosto. O aparelho é cadastrado uma vez, a sessão fica assinada num cookie e há um código de emergência para quando o aparelho não estiver por perto. Antes não existia login nenhum.",
+        details: ["Digital ou rosto (passkey)", "Cadastro do aparelho", "Código de emergência", "Tela de segurança nas preferências"],
+        featured: true,
+      },
+      {
+        date: "06 AGO 2026",
+        tag: "Segurança",
+        title: "A porta ficou fechada",
+        body: "O servidor passou a atender só a própria máquina. Antes, qualquer um na mesma rede Wi-Fi alcançava o cockpit inteiro — conversas, projetos e agentes — sem precisar de nada.",
+        details: ["Escuta em 127.0.0.1", "Barreira antes de cada rota", "Programas internos com crachá próprio"],
+      },
+      {
+        date: "06 AGO 2026",
+        tag: "Conversas",
+        title: "Reiniciar sem perder o fio",
+        body: "Quando as ferramentas param de responder, a conversa reinicia por conta própria: o processo cai, outro sobe no lugar e a mesma sessão é retomada. O histórico continua inteiro.",
+        details: ["Rota própria de reinício", "Mesma sessão retomada", "Contexto preservado"],
+      },
+      {
         date: "04 AGO 2026",
         tag: "Infraestrutura",
         title: "Agentes dentro dos seus servidores",
         body: "Cadastre servidores por SSH e deixe os agentes executarem comandos, trabalharem com arquivos e verificarem aplicações remotas. Para assumir o controle, digite !ls, !cd ou !sudo direto na conversa — como no Claude Code.",
         details: ["Terminal ao vivo com !", "Chave, senha ou agente SSH", "Segredos cifrados fora do banco", "Auditoria e bloqueios de risco"],
-        featured: true,
       },
       {
         date: "31 JUL 2026",
@@ -74,6 +95,12 @@ const copy = {
         body: "Painel de custo por demanda e por dia, tarefa que caiu recomeçando do ponto em que parou, e um Maestro que acorda sozinho quando fica tempo demais sem falar.",
         tags: ["Custo por demanda", "Retomar tarefa", "Maestro proativo"],
       },
+      {
+        number: "05",
+        title: "Abrir o cockpit de outro aparelho",
+        body: "Acesso pela sua própria rede privada, sem expor endereço nenhum na internet. Já dá para alcançar de outra máquina, mas está EM CONSTRUÇÃO: no celular a tela ainda não carrega direito e a adaptação para telas pequenas não foi feita.",
+        tags: ["Em construção", "Rede privada", "Sem expor na internet"],
+      },
     ],
   },
   en: {
@@ -83,9 +110,24 @@ const copy = {
     shipped: "Now available",
     items: [
       {
+        date: "AUG 06 2026", tag: "Security", title: "Corvus finally has a lock",
+        body: "Getting in now takes your fingerprint or your face. The device is registered once, the session is signed into a cookie, and there is an emergency code for when the device is not around. Before this, there was no login at all.",
+        details: ["Fingerprint or face (passkey)", "Device registration", "Emergency code", "A security screen in preferences"], featured: true,
+      },
+      {
+        date: "AUG 06 2026", tag: "Security", title: "The door is shut",
+        body: "The server now answers only its own machine. Before, anyone on the same Wi-Fi could reach the whole cockpit — conversations, projects and agents — without needing anything.",
+        details: ["Listens on 127.0.0.1", "A barrier before every route", "Internal programs carry their own badge"],
+      },
+      {
+        date: "AUG 06 2026", tag: "Conversations", title: "Restart without losing the thread",
+        body: "When the tools stop answering, the conversation restarts on its own: the process goes down, another comes up in its place, and the same session is picked back up. The history stays whole.",
+        details: ["A restart route of its own", "Same session resumed", "Context preserved"],
+      },
+      {
         date: "AUG 04 2026", tag: "Infrastructure", title: "Agents inside your servers",
         body: "Register servers over SSH and let agents run commands, work with files, and verify remote apps. To take control, type !ls, !cd, or !sudo right in the conversation — just like in Claude Code.",
-        details: ["Live terminal with !", "SSH key, password, or agent", "Secrets encrypted outside the database", "Auditing and risk safeguards"], featured: true,
+        details: ["Live terminal with !", "SSH key, password, or agent", "Secrets encrypted outside the database", "Auditing and risk safeguards"],
       },
       {
         date: "JUL 31 2026", tag: "Desktop", title: "Corvus is now an app",
@@ -135,6 +177,12 @@ const copy = {
         title: "Everyday polish",
         body: "A cost panel per demand and per day, a failed task resuming from where it stopped, and a Maestro that wakes itself up when it has been quiet for too long.",
         tags: ["Cost per demand", "Resume a task", "Proactive Maestro"],
+      },
+      {
+        number: "05",
+        title: "Open the cockpit from another device",
+        body: "Access over your own private network, with no address exposed to the internet. It already reaches another machine, but it is UNDER CONSTRUCTION: on a phone the screen still does not load properly, and the small-screen layout has not been done.",
+        tags: ["Under construction", "Private network", "Nothing exposed online"],
       },
     ],
   },
