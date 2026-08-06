@@ -1,0 +1,119 @@
+/* Folha só das páginas legais. Elas são HTML estático em public/, fora do app
+   React — por isso não herdam nada de src/index.css. */
+
+:root {
+  --void: #08090b;
+  --panel: #0e1014;
+  --fog: #e9eaee;
+  --fog-2: #b9bcc5;
+  --fog-3: #82868f;
+  --line: rgb(255 255 255 / 0.09);
+  --raven: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: clamp(2.5rem, 7vw, 5rem) 1.25rem clamp(4rem, 9vw, 6rem);
+  background: var(--void);
+  color: var(--fog-2);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.legal {
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+.legal__back {
+  display: inline-block;
+  margin-bottom: 2.5rem;
+  font-size: 0.85rem;
+  color: var(--fog-3);
+  text-decoration: none;
+}
+
+.legal__back:hover {
+  color: var(--fog);
+}
+
+h1 {
+  margin: 0 0 0.4rem;
+  font-size: clamp(1.9rem, 5vw, 2.6rem);
+  line-height: 1.15;
+  color: var(--fog);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  margin: 2.6rem 0 0.8rem;
+  font-size: 1.12rem;
+  color: var(--fog);
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+ul {
+  margin: 0 0 1.2rem;
+  padding-left: 1.2rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+strong {
+  color: var(--fog);
+  font-weight: 600;
+}
+
+a {
+  color: var(--fog);
+  text-decoration-color: rgb(239 68 68 / 0.6);
+  text-underline-offset: 3px;
+}
+
+code {
+  padding: 0.1em 0.35em;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--panel);
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.85em;
+  color: var(--fog);
+}
+
+.legal__date {
+  margin-bottom: 2.4rem;
+  font-size: 0.85rem;
+  color: var(--fog-3);
+}
+
+/* O marcador do que ainda falta decidir. Vermelho de propósito: é para ninguém
+   publicar sem ver. */
+.legal__todo {
+  margin-top: 1.6rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px dashed rgb(239 68 68 / 0.5);
+  border-radius: 8px;
+  background: rgb(239 68 68 / 0.06);
+  font-size: 0.88rem;
+  color: var(--raven);
+}
+
+.legal__foot {
+  margin-top: 3.5rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.85rem;
+  color: var(--fog-3);
+}

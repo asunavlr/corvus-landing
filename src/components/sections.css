@@ -17,6 +17,28 @@
   border-bottom: 1px solid transparent;
 }
 
+/* Enquanto a barra é transparente ela fica em cima do bando, e asas claras
+   passando atrás dos links comem a legibilidade. Uma sombra curta no topo
+   resolve sem fechar a foto. */
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 130px;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgb(6 6 10 / 0.72), transparent);
+  transition: opacity 0.3s ease;
+}
+
+.nav--solid::before {
+  opacity: 0;
+}
+
+.nav__inner,
+.nav__drawer {
+  position: relative;
+}
+
 .nav--solid {
   background: rgb(6 6 10 / 0.8);
   backdrop-filter: blur(14px) saturate(1.4);
@@ -84,12 +106,139 @@
   color: var(--fog);
 }
 
-@media (max-width: 700px) {
+/* ------------------------- excedente do menu ("Mais") --------------------- */
+
+.nav__more {
+  position: relative;
+}
+
+.nav__more-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--fog-3);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.nav__more-btn:hover,
+.nav__more-btn[aria-expanded="true"] {
+  color: var(--fog);
+}
+
+.nav__more-btn span {
+  font-size: 0.7rem;
+  transform: rotate(90deg);
+}
+
+.nav__menu {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  left: -0.9rem;
+  z-index: 10;
+  min-width: 11rem;
+  margin: 0;
+  padding: 0.4rem;
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: rgb(6 6 10 / 0.95);
+  backdrop-filter: blur(14px) saturate(1.4);
+}
+
+.nav__menu a {
+  display: block;
+  padding: 0.42rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.nav__menu a:hover {
+  background: rgb(255 255 255 / 0.05);
+}
+
+/* ------------------------- gaveta (celular) ------------------------------- */
+
+.nav__burger {
+  display: none;
+  width: 34px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid var(--line-2);
+  border-radius: 6px;
+  background: none;
+  cursor: pointer;
+}
+
+.nav__burger-ico {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  height: 100%;
+}
+
+.nav__burger-ico i {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  margin: 0 auto;
+  background: var(--fog-2);
+  transition: transform 0.2s ease;
+}
+
+.nav__burger-ico.is-open i:first-child {
+  transform: translateY(3.25px) rotate(45deg);
+}
+
+.nav__burger-ico.is-open i:last-child {
+  transform: translateY(-3.25px) rotate(-45deg);
+}
+
+.nav__drawer {
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  background: rgb(6 6 10 / 0.96);
+  backdrop-filter: blur(14px) saturate(1.4);
+}
+
+.nav__drawer-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.2rem 1rem;
+  margin: 0;
+  padding-block: 0.8rem 1.1rem;
+  list-style: none;
+}
+
+.nav__drawer-list a {
+  display: block;
+  padding: 0.55rem 0;
+  text-decoration: none;
+  font-size: 0.92rem;
+  color: var(--fog-2);
+}
+
+@media (max-width: 860px) {
   .nav__links {
     display: none;
   }
   .nav__inner {
     justify-content: space-between;
+  }
+  .nav__burger {
+    display: block;
+  }
+}
+
+@media (max-width: 460px) {
+  .nav__cta {
+    display: none;
   }
 }
 
@@ -569,6 +718,7 @@ pre code {
 }
 
 .api__tabs {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
@@ -576,8 +726,6 @@ pre code {
 
 .api__tab {
   position: relative;
-  /* Sem isto o fundo da aba ativa (z-index -1) cai atrás da própria seção. */
-  isolation: isolate;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -601,15 +749,18 @@ pre code {
   border-color: transparent;
 }
 
+/* Uma pílula só, irmã dos botões, que o GSAP move para a aba escolhida. */
 .api__tab-bg {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
   border-radius: 8px;
   background: var(--fog);
-  z-index: 0;
+  pointer-events: none;
 }
 
-/* O fundo também é um <span> filho — só os rótulos sobem para cima dele. */
 .api__tab-label {
   position: relative;
   z-index: 1;
@@ -816,6 +967,23 @@ pre code {
   border-top: 1px solid var(--line);
   font-size: 0.72rem;
   color: var(--fog-3);
+}
+
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+  padding-bottom: 1.6rem;
+  font-size: 0.72rem;
+}
+
+.footer__legal a {
+  color: var(--fog-3);
+  text-decoration: none;
+}
+
+.footer__legal a:hover {
+  color: var(--fog);
 }
 
 /* ------------------------------ idioma (nav) ------------------------------ */
@@ -1083,4 +1251,90 @@ pre code {
   background: rgb(255 36 0 / 0.1);
   color: var(--ember);
   font-size: 0.68rem;
+}
+
+/* ------------------------- em construção (rede) --------------------------- */
+
+/* O aviso precisa ser lido antes da lista: faixa própria, não rodapé miúdo. */
+.wip {
+  margin-top: 3rem;
+  padding: 1.6rem clamp(1.1rem, 3vw, 2rem);
+  border: 1px solid rgb(255 129 99 / 0.35);
+  border-radius: 12px;
+  background: rgb(255 129 99 / 0.06);
+}
+
+.wip__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  padding-bottom: 1.1rem;
+  margin-bottom: 1.4rem;
+  border-bottom: 1px solid rgb(255 129 99 / 0.25);
+}
+
+.wip__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 100px;
+  background: var(--ember);
+  color: #14060a;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.wip__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #14060a;
+}
+
+.wip__note {
+  flex: 1 1 16rem;
+  min-width: 0;
+  margin: 0;
+  color: var(--ember);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.wip__title {
+  margin: 0 0 0.7rem;
+  font-size: clamp(1.35rem, 2.6vw, 1.8rem);
+  letter-spacing: -0.02em;
+  color: var(--fog);
+}
+
+.wip__list {
+  list-style: none;
+  margin: 1.6rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.wip__list li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: var(--fog-2);
+  line-height: 1.65;
+}
+
+.wip__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ember);
 }

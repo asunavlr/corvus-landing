@@ -18,12 +18,27 @@ export const pt = {
   nav: {
     links: [
       { href: "#produto", label: "Produto" },
+      { href: "#telas", label: "Telas" },
       { href: "#rede", label: "Rede" },
-      { href: "#mcp", label: "MCP" },
       { href: "#api", label: "API" },
       { href: "#docs", label: "Docs" },
       { href: "#preco", label: "Preço" },
     ],
+    /** O resto das seções vive aqui: no desktop é um menu que abre, no celular entra na lista. */
+    more: {
+      label: "Mais",
+      links: [
+        { href: "#recursos", label: "Recursos" },
+        { href: "#orquestracao", label: "Orquestração" },
+        { href: "#verificacao", label: "Verificação" },
+        { href: "#guarda", label: "Freio" },
+        { href: "#desktop", label: "Desktop" },
+        { href: "#registro", label: "Backup e rastro" },
+        { href: "#mcp", label: "MCP" },
+        { href: "#stack", label: "Stack" },
+      ],
+    },
+    menuLabel: "Abrir menu",
     cta: "Assinar",
   },
 
@@ -61,8 +76,8 @@ export const pt = {
         step: "01",
         title: "Assine no GitHub",
         body:
-          "O patrocínio te dá acesso de leitura ao repositório privado, com o código " +
-          "completo. Não existe chave para guardar nem perder.",
+          "O patrocínio te dá acesso de leitura ao repositório corvus-prod, com o código " +
+          "completo. Não existe chave para guardar nem perder: o acesso é a sua conta do GitHub.",
       },
       {
         step: "02",
@@ -88,7 +103,7 @@ export const pt = {
         { kind: "cmd", text: "npx corvus-trial" },
         { kind: "blank", text: "" },
         { kind: "ok", text: "proxy no ar        127.0.0.1:3210" },
-        { kind: "ok", text: "licença ok         1 máquina de 3" },
+        { kind: "ok", text: "teste              7 dias · 300 chamadas" },
         { kind: "ok", text: "claude cli         detectado (v2.4.1)" },
         { kind: "ok", text: "banco              ~/.corvus/corvus.db" },
         { kind: "blank", text: "" },
@@ -162,6 +177,69 @@ export const pt = {
       s2: "ler migrações",
     },
     caption: "A mesma rede, dentro do produto",
+    /** Decisão do dono: a rede entre instalações entra na página já avisando que não está pronta. */
+    wip: {
+      badge: "Em construção",
+      note: "Esta parte ainda está sendo feita. O que está descrito abaixo ainda não está pronto para uso.",
+    },
+    deep: {
+      title: "Dois Corvus conversando",
+      lede: "A rede não é um desenho. É um canal fechado entre duas instalações do Corvus.",
+      items: [
+        "O que trafega vai cifrado ponta a ponta e assinado. O servidor no meio guarda envelopes fechados: não lê prompt, não guarda chave, não manda ninguém executar nada.",
+        "Uma mensagem que chega vira turno de verdade no seu maestro — não é caixa de entrada, é trabalho começando.",
+        "Cada contato tem permissão própria: só conversar, ou também propor tarefa. E dá para bloquear.",
+        "Envelope vale 30 dias, 500 por sincronização, com limite de tráfego. O relay sobe num container e escuta só onde você mandar.",
+      ],
+    },
+  },
+
+  desktop: {
+    eyebrow: "Versão desktop",
+    title: "Também é um aplicativo",
+    lede: "Se você não quer terminal, instale e abra.",
+    items: [
+      {
+        title: "Instalador para Windows.",
+        body: "Um atalho no menu iniciar, janela própria, sem digitar endereço.",
+      },
+      {
+        title: "Não precisa ter Node instalado.",
+        body: "O Corvus inteiro vai junto.",
+      },
+      {
+        title: "Continua rodando só na sua máquina, em 127.0.0.1.",
+        body: "Fechou a janela, o servidor morre com ela.",
+      },
+    ],
+  },
+
+  trail: {
+    eyebrow: "Backup, auditoria e ordens permanentes",
+    title: "Nada se perde, nada se repete",
+    lede:
+      "Trabalho de agente precisa de memória e de rastro. O Corvus tem os dois, sem você pedir.",
+    items: [
+      {
+        title: "Backup sozinho, todo dia.",
+        body:
+          "Uma cópia do banco por dia em ~/.corvus/backups, as 10 mais recentes guardadas. " +
+          "Cópia consistente, feita com o Corvus rodando.",
+      },
+      {
+        title: "Sete dias de rastro.",
+        body:
+          "Turno que começou e terminou, tarefa aprovada, recusada ou entregue sem verificação, " +
+          "pergunta feita e respondida, deploy travado, comando negado no servidor. Vinte tipos " +
+          "de evento, com hora, conversa e tarefa.",
+      },
+      {
+        title: "Ordens que ficam.",
+        body:
+          "“Sempre rode os testes antes.” “Nunca suba na sexta.” Você diz uma vez e a ordem entra " +
+          "no topo de cada retomada do maestro. Ele não pergunta de novo.",
+      },
+    ],
   },
 
   features: {
@@ -482,7 +560,7 @@ export const pt = {
     prompts: [
       {
         title: "Subir pela primeira vez",
-        hint: "instala, valida a chave e abre o dashboard",
+        hint: "instala, sobe o proxy e abre o dashboard",
         text:
           "Estou configurando o Corvus, um proxy local que roda o Claude Code CLI e serve um " +
           "dashboard no navegador. Leia o README.md e o src/lib/claude.ts deste repositório " +
@@ -560,13 +638,13 @@ export const pt = {
     per: "/ mês",
     brl: "cerca de R$ 77 · a cobrança é em dólar, pelo GitHub",
     lede:
-      "O acesso é um patrocínio no GitHub: ao assinar, você entra no repositório privado, " +
-      "clona e roda. Não há chave, não há login, não há verificação online — rodando do " +
-      "repositório, o Corvus não fala com servidor nosso em momento nenhum.",
+      "O acesso é um patrocínio no GitHub: ao assinar, a sua conta entra no repositório " +
+      "corvus-prod. Você clona e roda. Não existe chave de licença, não existe ativação, " +
+      "não existe verificação online — o Corvus nunca fala com servidor nosso.",
     bullets: [
-      "Código-fonte completo do proxy e do dashboard, no repositório privado.",
-      "Atualizações enquanto a assinatura estiver ativa.",
-      "Até 3 máquinas com a mesma chave.",
+      "Código-fonte completo do proxy e do dashboard, no repositório corvus-prod.",
+      "Atualizações enquanto a assinatura estiver ativa: é só dar git pull.",
+      "Sem chave e sem ativação — rode nas suas máquinas, é o repositório clonado.",
       "Cancelou? Você fica com a versão que já tem, para sempre — só para de receber as novas.",
       "Nada roda em servidor nosso: o processo, o banco e o código são seus.",
     ],
@@ -574,9 +652,9 @@ export const pt = {
     ctaNote: "você precisa do Claude Code CLI instalado e autenticado",
     keepTitle: "O que acontece se eu parar de pagar?",
     keepBody:
-      "Nada some. A versão que você baixou continua rodando na sua máquina, sem limite de " +
-      "tempo e sem checagem online depois da primeira ativação. O que você perde é o acesso " +
-      "às versões seguintes — para voltar a recebê-las, é só reativar a assinatura.",
+      "Nada some. O que você clonou continua rodando na sua máquina, sem limite de tempo e " +
+      "sem nenhuma checagem online — não há o que expirar. O que você perde é o acesso ao " +
+      "repositório e às versões seguintes; reativando a assinatura, ele volta.",
   },
 
   footer: {
@@ -589,7 +667,12 @@ export const pt = {
     cta: "Assinar por US$ 15",
     tagline: "um cockpit para o Claude Code",
     credit: "feito por Christofer e Kevin",
-    version: "v1.0",
+    version: "v1.0.3",
+    legal: {
+      privacy: { href: "/privacidade.html", label: "Privacidade" },
+      terms: { href: "/termos.html", label: "Termos de uso" },
+      email: "editorial@agropujante.com.br",
+    },
   },
 };
 

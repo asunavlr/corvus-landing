@@ -21,8 +21,10 @@
   height: 100%;
   object-fit: cover;
   object-position: 50% 38%;
-  filter: invert(1) grayscale(1) contrast(1.05) brightness(0.85);
-  opacity: 0.66;
+  /* O bando é o argumento da página e estava sumindo debaixo do degradê:
+     mais contraste na foto, menos tinta por cima. */
+  filter: invert(1) grayscale(1) contrast(1.25) brightness(1.05);
+  opacity: 0.92;
 }
 
 /* Duas camadas: o degradê fixo que ancora o texto, e o véu que escurece
@@ -33,10 +35,13 @@
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(120% 80% at 50% 0%, transparent 10%, var(--void) 78%),
+    radial-gradient(120% 85% at 50% 0%, transparent 22%, var(--void) 92%),
     radial-gradient(48rem 30rem at 8% 10%, rgb(201 19 10 / 0.16), transparent 62%),
     radial-gradient(42rem 26rem at 92% 72%, rgb(255 36 0 / 0.13), transparent 64%),
-    linear-gradient(180deg, rgb(6 6 10 / 0.5) 0%, rgb(6 6 10 / 0.18) 35%, var(--void) 92%);
+    /* O texto mora à esquerda: a tinta é mais forte desse lado, e o céu fica
+       aberto do outro. Escurecer os dois lados igual apagava a foto inteira. */
+    linear-gradient(100deg, rgb(6 6 10 / 0.86) 0%, rgb(6 6 10 / 0.5) 46%, rgb(6 6 10 / 0.1) 100%),
+    linear-gradient(180deg, rgb(6 6 10 / 0.25) 0%, transparent 30%, var(--void) 94%);
 }
 
 .hero__veil {
@@ -45,6 +50,8 @@
   z-index: -1;
   background: var(--void);
   pointer-events: none;
+  /* Começa invisível: o véu só entra conforme a página desce. */
+  opacity: 0;
 }
 
 .hero__inner {
@@ -95,6 +102,8 @@
 
 .hero__title em {
   font-style: italic;
+  /* Sem bloco, o GSAP não tem o que mover: transform não pega em linha. */
+  display: inline-block;
 }
 
 /* Sem isto, `em` (mais específico) devolvia a cor sólida e apagava o gradiente. */
@@ -135,6 +144,28 @@
 
 .btn:hover {
   transform: translateY(-2px);
+}
+
+/* Aperto: o botão afunda um fio, como coisa física. */
+.btn:active {
+  transform: translateY(0) scale(0.985);
+}
+
+/* A seta dentro do próprio disco, encostada na borda interna do botão. */
+.btn__ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.55rem;
+  height: 1.55rem;
+  margin-right: -0.5rem;
+  border-radius: 50%;
+  background: rgb(0 0 0 / 0.14);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn:hover .btn__ico {
+  transform: translate(2px, -1px) scale(1.06);
 }
 
 .btn--primary {

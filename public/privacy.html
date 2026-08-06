@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#08090b" />
+    <meta name="robots" content="index, follow" />
+    <title>Privacy policy — Corvus</title>
+    <link rel="icon" type="image/png" href="/images/crow-icon.png" />
+    <link rel="stylesheet" href="/legal.css" />
+  </head>
+  <body>
+    <main class="legal">
+      <a class="legal__back" href="/">← Corvus</a>
+      <h1>Privacy policy</h1>
+      <p class="legal__date">Last updated: 5 August 2026</p>
+
+      <p>
+        Corvus is a program that runs on your machine. This policy covers two different things:
+        this website and the program. They work differently, so they are treated separately here.
+      </p>
+
+      <h2>1. The Corvus program</h2>
+      <p>
+        Corvus is a local process. It starts in your terminal, listens on
+        <code>localhost:3210</code>, and keeps everything in a SQLite database inside your own
+        user folder (<code>~/.corvus/corvus.db</code>, or wherever <code>CORVUS_HOME</code>
+        points).
+      </p>
+      <p><strong>What we do not collect:</strong></p>
+      <ul>
+        <li>Your code, your files and the contents of your folders.</li>
+        <li>Your conversations, prompts, answers and agent transcripts.</li>
+        <li>Folder paths, project names and settings.</li>
+        <li>Telemetry, usage statistics, crash reports or machine identifiers.</li>
+      </ul>
+      <p>
+        There is no user account in the program, no license key and no online activation. We have
+        no server receiving anything from your Corvus, because the program sends us nothing.
+      </p>
+      <p><strong>Where your data does go:</strong></p>
+      <ul>
+        <li>
+          <strong>Anthropic.</strong> Corvus runs the Claude Code CLI already installed on your
+          machine. Everything you say to the agent goes to Anthropic, under the account and terms
+          you already have with them. The same would happen from a terminal.
+        </li>
+        <li>
+          <strong>Sites you ask it to verify.</strong> When an agent opens a browser to check a
+          screen, it visits the address you gave it, with the credentials you supplied.
+        </li>
+        <li>
+          <strong>MCP servers and tools you already configured.</strong> Corvus inherits your
+          machine's environment. Whatever you had enabled stays enabled, with the same reach as
+          before.
+        </li>
+      </ul>
+      <p>
+        In all of these cases the relationship is directly between you and the third party. We do
+        not mediate or see that traffic.
+      </p>
+
+      <h2>2. This website</h2>
+      <p>
+        This page is static. No forms, no login, no signup, no analytics, and it stores no
+        cookies.
+      </p>
+      <p>What does exist:</p>
+      <ul>
+        <li>
+          <strong>Your language choice</strong> is saved in your browser's
+          <code>localStorage</code>, on your machine. It never leaves it.
+        </li>
+        <li>
+          <strong>Google Fonts.</strong> The page loads typefaces from
+          <code>fonts.googleapis.com</code> and <code>fonts.gstatic.com</code>. That makes your
+          browser contact Google, which receives your IP address and user agent, under their own
+          privacy policy.
+        </li>
+        <li>
+          <strong>Vercel hosting.</strong> The site is served by Vercel, which keeps its own
+          infrastructure access logs.
+        </li>
+      </ul>
+
+      <h2>3. Payment</h2>
+      <p>
+        The subscription happens entirely on GitHub Sponsors. We do not receive, process or store
+        any payment data — no card numbers, no billing address. What reaches us is what GitHub
+        shows any sponsored account: the username of the sponsor, so read access to the
+        repository can be granted. The data you give GitHub is governed by GitHub's privacy
+        policy.
+      </p>
+
+      <h2>4. Your rights</h2>
+      <p>
+        Since we hold no personal data of yours, there is no database of ours to access, correct
+        or erase. If you still wish to exercise any right under the Brazilian LGPD (Law
+        13.709/2018) or the GDPR, write to the address below and we will answer.
+      </p>
+      <p>
+        The data Corvus itself stores lives on your machine and is under your control: deleting
+        the database file deletes all of it.
+      </p>
+
+      <h2>5. Changes</h2>
+      <p>
+        If this policy changes, the date at the top changes with it. Material changes will be
+        announced on this page.
+      </p>
+
+      <h2>6. Who is responsible, and contact</h2>
+      <p>
+        Corvus is maintained by <strong>Kevin Matos</strong>, an individual — not a company. For
+        anything concerning this policy, including the rights in section 4, write to
+        <a href="mailto:editorial@agropujante.com.br">editorial@agropujante.com.br</a>.
+      </p>
+
+      <p class="legal__foot"><a href="/terms.html">Terms of use</a> · <a href="/">Back to the site</a></p>
+    </main>
+  </body>
+</html>

@@ -28,7 +28,9 @@
   --fail: #f87171;
 
   --serif: "Instrument Serif", Georgia, serif;
-  --sans: "Inter", system-ui, -apple-system, sans-serif;
+  /* Geist no lugar do Inter: o Inter é a fonte-padrão de toda landing gerada
+     por IA, e o desenho do Geist tem mais aresta — combina com o cockpit. */
+  --sans: "Geist", system-ui, -apple-system, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
   --page: 1160px;
@@ -57,6 +59,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* A barra é fixa: sem isto o alvo da âncora encosta por baixo dela. */
+  scroll-padding-top: 72px;
 }
 
 body {
@@ -98,13 +102,31 @@ h2,
 h3 {
   font-family: var(--serif);
   font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.08;
+  letter-spacing: -0.015em;
+  line-height: 1.06;
   margin: 0;
+  /* Sem isto, títulos longos deixam uma palavra sozinha na última linha. */
+  text-wrap: balance;
 }
 
 p {
   margin: 0;
+  text-wrap: pretty;
+}
+
+/* --------------------------- entrada ao rolar ----------------------------
+   O estado escondido só existe quando o motor de animação ligou (.anim no
+   <html>). Sem JS, ou com prefers-reduced-motion, nada disso é aplicado e a
+   página nasce inteira na tela.
+--------------------------------------------------------------------------- */
+
+html.anim [data-rise] {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+html.anim [data-rise="sm"] {
+  transform: translateY(12px);
 }
 
 a {
@@ -195,6 +217,9 @@ img {
   *::before,
   *::after {
     animation-duration: 0.001ms !important;
+    /* Sem isto, o que era um pulso lento vira tremor: duração quase zero
+       repetida para sempre. */
+    animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
 }

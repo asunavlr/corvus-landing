@@ -1,0 +1,42 @@
+/* O facho do SpotlightCard (React Bits), repintado com o fogo do Corvus.
+   Só o brilho mora aqui — fundo, borda e raio continuam vindo de .card. */
+
+.spot {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Acima do fundo do cartão, abaixo do texto — daí o z-index nos filhos. */
+.spot > * {
+  position: relative;
+  z-index: 1;
+}
+
+.spot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  background: radial-gradient(
+    22rem 22rem at var(--mouse-x) var(--mouse-y),
+    rgb(255 74 43 / 0.13),
+    transparent 72%
+  );
+}
+
+.spot:hover::after,
+.spot:focus-within::after {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .spot::after {
+    display: none;
+  }
+}

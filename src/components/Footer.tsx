@@ -1,18 +1,16 @@
-import { motion } from "motion/react";
 import { REPO_TRIAL, SPONSOR, useCopy } from "../content";
-import { inViewSoft, rise, riseSmall, stagger } from "../lib/motion";
 
 export default function Footer() {
   const copy = useCopy();
   return (
     <footer className="footer">
       <div className="shell">
-        <motion.div className="footer__cta" variants={stagger()} {...inViewSoft}>
-          <motion.h2 className="footer__title" variants={rise}>
+        <div className="footer__cta">
+          <h2 className="footer__title" data-rise>
             {copy.footer.title}
             <em className="flame">{copy.footer.titleEm}</em>
-          </motion.h2>
-          <motion.div className="footer__install" variants={rise}>
+          </h2>
+          <div className="footer__install" data-rise>
             <pre className="mono">
               <code>
                 <span className="tok-dim">$</span> npx{" "}
@@ -21,12 +19,12 @@ export default function Footer() {
                 <span className="tok-dim">{"# → http://localhost:3210"}</span>
               </code>
             </pre>
-          </motion.div>
-          <motion.p className="footer__note" variants={riseSmall}>{copy.footer.note}</motion.p>
-          <motion.a className="btn btn--primary" href={SPONSOR} variants={rise}>
+          </div>
+          <p className="footer__note" data-rise="sm">{copy.footer.note}</p>
+          <a className="btn btn--primary" href={SPONSOR} data-rise>
             {copy.footer.cta}
-          </motion.a>
-        </motion.div>
+          </a>
+        </div>
 
         <div className="footer__bar">
           <p className="mono">Corvus · {copy.footer.tagline}</p>
@@ -37,6 +35,12 @@ export default function Footer() {
             {copy.footer.credit}
             <span className="footer__version">{copy.footer.version}</span>
           </p>
+        </div>
+
+        <div className="footer__legal mono">
+          <a href={copy.footer.legal.privacy.href}>{copy.footer.legal.privacy.label}</a>
+          <a href={copy.footer.legal.terms.href}>{copy.footer.legal.terms.label}</a>
+          <a href={`mailto:${copy.footer.legal.email}`}>{copy.footer.legal.email}</a>
         </div>
       </div>
     </footer>

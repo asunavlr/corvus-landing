@@ -45,8 +45,22 @@ ou um endpoint, é em `src/content/`.
 - A imagem do bando é a mesma do Corvus, invertida no CSS — o original é preto sobre
   névoa clara, e a página é escura.
 
-## O que ainda não existe no produto
+## O fluxo comercial
 
-A página descreve o fluxo comercial pretendido: `npx corvus@latest --key ...`, chave de
-licença e acesso por patrocínio no GitHub. Nada disso está implementado no repositório do
-Corvus ainda — a landing vem antes.
+Não existe chave de licença em lugar nenhum — nem no produto, nem na página. São dois
+caminhos:
+
+- **Teste grátis:** `npx corvus-trial`. Sete dias, 300 chamadas de ferramenta, 10 tarefas,
+  2 agentes ao mesmo tempo, 1 projeto e 5 verificações no navegador.
+- **Pago (US$ 15/mês):** patrocínio no [GitHub Sponsors](https://github.com/sponsors/asunavlr),
+  que dá acesso de leitura ao repositório `corvus-prod`. Você clona e roda. Sem ativação,
+  sem verificação online.
+
+Se aparecer "chave", "licença" ou "N máquinas" em qualquer texto, é bug de conteúdo.
+
+## Páginas legais
+
+`public/privacidade.html`, `public/termos.html` e os espelhos em inglês (`privacy.html`,
+`terms.html`) são HTML estático, com folha própria em `public/legal.css` — não passam pelo
+React. Ambas trazem um bloco vermelho `.legal__todo` com o que falta preencher (razão
+social, CNPJ, foro). **Não publique com esse bloco na tela.**

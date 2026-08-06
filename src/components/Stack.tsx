@@ -1,6 +1,4 @@
-import { motion } from "motion/react";
 import { useCopy } from "../content";
-import { inViewSoft, rise, riseSmall, stagger } from "../lib/motion";
 
 const EVENTS = [
   "session", "text_delta", "thinking_delta", "tool_use", "tool_result",
@@ -13,32 +11,30 @@ export default function Stack() {
   return (
     <section className="section" id="stack">
       <div className="shell">
-        <motion.div variants={stagger()} {...inViewSoft}>
-          <motion.p className="eyebrow" variants={riseSmall}>{copy.stack.eyebrow}</motion.p>
-          <motion.h2 className="h2" variants={rise}>{copy.stack.title}</motion.h2>
-        </motion.div>
+        <div>
+          <p className="eyebrow" data-rise="sm">{copy.stack.eyebrow}</p>
+          <h2 className="h2" data-rise>{copy.stack.title}</h2>
+        </div>
 
-        <motion.div className="grid grid--three" variants={stagger(0.06, 0.1)} {...inViewSoft}>
+        <div className="grid grid--three">
           {copy.stack.items.map((item, i) => (
-            <motion.div key={i} className="stack__item" variants={rise}>
+            <div key={i} className="stack__item" data-rise>
               <p className="stack__name">{item.name}</p>
               <p className="stack__role">{item.role}</p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div className="events" variants={stagger(0.03, 0.15)} {...inViewSoft}>
-          <motion.p className="events__label eyebrow" variants={riseSmall}>
-            {copy.stack.eventsLabel}
-          </motion.p>
+        <div className="events">
+          <p className="events__label eyebrow" data-rise="sm">{copy.stack.eventsLabel}</p>
           <div className="events__wrap">
             {EVENTS.map((event) => (
-              <motion.span key={event} className="events__chip mono" variants={riseSmall}>
+              <span key={event} className="events__chip mono" data-rise="sm">
                 {event}
-              </motion.span>
+              </span>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

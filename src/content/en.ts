@@ -7,12 +7,26 @@ export const en: Copy = {
   nav: {
     links: [
       { href: "#produto", label: "Product" },
+      { href: "#telas", label: "Screens" },
       { href: "#rede", label: "Network" },
-      { href: "#mcp", label: "MCP" },
       { href: "#api", label: "API" },
       { href: "#docs", label: "Docs" },
       { href: "#preco", label: "Pricing" },
     ],
+    more: {
+      label: "More",
+      links: [
+        { href: "#recursos", label: "Features" },
+        { href: "#orquestracao", label: "Orchestration" },
+        { href: "#verificacao", label: "Verification" },
+        { href: "#guarda", label: "Brakes" },
+        { href: "#desktop", label: "Desktop" },
+        { href: "#registro", label: "Backup & trail" },
+        { href: "#mcp", label: "MCP" },
+        { href: "#stack", label: "Stack" },
+      ],
+    },
+    menuLabel: "Open menu",
     cta: "Subscribe",
   },
 
@@ -51,8 +65,8 @@ export const en: Copy = {
         step: "01",
         title: "Subscribe on GitHub",
         body:
-          "Sponsoring gives you read access to the private repository, with the full source. " +
-          "There is no key to keep or lose.",
+          "Sponsoring gives you read access to the corvus-prod repository, with the full " +
+          "source. There is no key to keep or lose: the access is your GitHub account.",
       },
       {
         step: "02",
@@ -78,7 +92,7 @@ export const en: Copy = {
         { kind: "cmd", text: "npx corvus-trial" },
         { kind: "blank", text: "" },
         { kind: "ok", text: "proxy up           127.0.0.1:3210" },
-        { kind: "ok", text: "license ok         1 of 3 machines" },
+        { kind: "ok", text: "trial              7 days · 300 calls" },
         { kind: "ok", text: "claude cli         found (v2.4.1)" },
         { kind: "ok", text: "database           ~/.corvus/corvus.db" },
         { kind: "blank", text: "" },
@@ -151,6 +165,67 @@ export const en: Copy = {
       s2: "read migrations",
     },
     caption: "The same network, inside the product",
+    wip: {
+      badge: "Under construction",
+      note: "This part is still being built. What's described below isn't ready to use yet.",
+    },
+    deep: {
+      title: "Two Corvus talking",
+      lede: "The network isn't a drawing. It's a closed channel between two Corvus installs.",
+      items: [
+        "Everything is end-to-end encrypted and signed. The relay in the middle stores sealed envelopes: it can't read a prompt, holds no key, and orders no one to run anything.",
+        "An incoming message becomes a real turn in your conductor — not an inbox, work starting.",
+        "Each contact carries its own permission: talk only, or also propose tasks. Blocking is one click.",
+        "Envelopes last 30 days, 500 per sync, with a traffic cap. The relay runs in a container and listens only where you tell it to.",
+      ],
+    },
+  },
+
+  desktop: {
+    eyebrow: "Desktop version",
+    title: "It's also an app",
+    lede: "If you'd rather skip the terminal, install and open it.",
+    items: [
+      {
+        title: "Windows installer.",
+        body: "A shortcut in the Start menu, its own window, no address to type.",
+      },
+      {
+        title: "No Node install required.",
+        body: "The whole Corvus ships inside.",
+      },
+      {
+        title: "Still runs only on your machine, on 127.0.0.1.",
+        body: "Close the window and the server goes with it.",
+      },
+    ],
+  },
+
+  trail: {
+    eyebrow: "Backup, audit trail and standing orders",
+    title: "Nothing lost, nothing repeated",
+    lede: "Agent work needs memory and a trail. Corvus keeps both, unasked.",
+    items: [
+      {
+        title: "A backup a day, on its own.",
+        body:
+          "One copy of the database per day in ~/.corvus/backups, the 10 most recent kept. " +
+          "A consistent copy, taken while Corvus runs.",
+      },
+      {
+        title: "Seven days of trail.",
+        body:
+          "Turns started and ended, tasks approved, refused or delivered unverified, questions " +
+          "asked and answered, deploys blocked, server commands denied. Twenty event types, each " +
+          "with time, chat and task.",
+      },
+      {
+        title: "Orders that stick.",
+        body:
+          "“Always run the tests first.” “Never ship on a Friday.” Say it once and it sits at the " +
+          "top of every time the conductor picks work back up. It won't ask again.",
+      },
+    ],
   },
 
   features: {
@@ -472,7 +547,7 @@ export const en: Copy = {
     prompts: [
       {
         title: "First run",
-        hint: "installs, validates the key and opens the dashboard",
+        hint: "installs, starts the proxy and opens the dashboard",
         text:
           "I am setting up Corvus, a local proxy that runs the Claude Code CLI and serves a " +
           "dashboard in the browser. Read README.md and src/lib/claude.ts in this repository " +
@@ -549,13 +624,13 @@ export const en: Copy = {
     per: "/ month",
     brl: "about R$ 77 · billed in dollars, through GitHub",
     lede:
-      "Access is a GitHub sponsorship: subscribing gets you into the private repository — " +
-      "you clone it and run it. No key, no login, no online check: running from the repo, " +
+      "Access is a GitHub sponsorship: subscribing puts your account into the corvus-prod " +
+      "repository. You clone it and run it. No license key, no activation, no online check — " +
       "Corvus never talks to a server of ours.",
     bullets: [
-      "Full source of the proxy and the dashboard, in the private repository.",
-      "Updates for as long as the subscription is active.",
-      "Up to 3 machines on the same key.",
+      "Full source of the proxy and the dashboard, in the corvus-prod repository.",
+      "Updates for as long as the subscription is active: just git pull.",
+      "No key and no activation — run it on your machines, it is the cloned repository.",
       "Cancelled? You keep the version you have, forever — you just stop getting new ones.",
       "Nothing runs on a server of ours: the process, the database and the code are yours.",
     ],
@@ -563,9 +638,9 @@ export const en: Copy = {
     ctaNote: "you need the Claude Code CLI installed and authenticated",
     keepTitle: "What happens if I stop paying?",
     keepBody:
-      "Nothing disappears. The version you downloaded keeps running on your machine, with no " +
-      "time limit and no online check after the first activation. What you lose is access to " +
-      "later versions — reactivate the subscription and they come back.",
+      "Nothing disappears. What you cloned keeps running on your machine, with no time limit " +
+      "and no online check at all — there is nothing to expire. What you lose is access to " +
+      "the repository and to later versions; reactivate the subscription and it comes back.",
   },
 
   footer: {
@@ -578,6 +653,11 @@ export const en: Copy = {
     cta: "Subscribe for $15",
     tagline: "a cockpit for Claude Code",
     credit: "made by Christofer and Kevin",
-    version: "v1.0",
+    version: "v1.0.3",
+    legal: {
+      privacy: { href: "/privacy.html", label: "Privacy" },
+      terms: { href: "/terms.html", label: "Terms of use" },
+      email: "editorial@agropujante.com.br",
+    },
   },
 };

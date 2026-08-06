@@ -1,25 +1,60 @@
-import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useCopy } from "../content";
-import { ease, inViewSoft, rise, riseSmall, stagger } from "../lib/motion";
+import { EASE, gsap, reduced, useGSAP } from "../lib/anim";
 
 /** A superfície HTTP inteira do proxy, agrupada como ela existe no App Router. */
 export default function ApiReference() {
   const copy = useCopy();
   const [active, setActive] = useState(copy.api.groups[0].id);
   const group = copy.api.groups.find((g) => g.id === active) ?? copy.api.groups[0];
+  const tabs = useRef<HTMLDivElement>(null);
+  const panel = useRef<HTMLDivElement>(null);
+
+  /* A pílula da aba escolhida é uma só, que desliza — o mesmo efeito que o
+     layoutId dava antes, agora medindo o botão e movendo com GSAP. */
+  useGSAP(
+    () => {
+      const wrap = tabs.current;
+      if (!wrap) return;
+      const on = wrap.querySelector<HTMLElement>(".api__tab--on");
+      const bg = wrap.querySelector<HTMLElement>(".api__tab-bg");
+      if (!on || !bg) return;
+      gsap.to(bg, {
+        x: on.offsetLeft,
+        width: on.offsetWidth,
+        height: on.offsetHeight,
+        duration: reduced ? 0 : 0.45,
+        ease: EASE,
+      });
+    },
+    { dependencies: [active, copy] },
+  );
+
+  /* Troca de aba: o painel entra por baixo, e as rotas em fila. */
+  useGSAP(
+    () => {
+      if (reduced || !panel.current) return;
+      gsap.fromTo(
+        panel.current.querySelectorAll(".api__route"),
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: 0.35, ease: EASE, stagger: 0.035 },
+      );
+    },
+    { dependencies: [active, copy] },
+  );
 
   return (
     <section className="section section--tinted" id="api">
       <div className="shell">
-        <motion.div variants={stagger()} {...inViewSoft}>
-          <motion.p className="eyebrow" variants={riseSmall}>{copy.api.eyebrow}</motion.p>
-          <motion.h2 className="h2" variants={rise}>{copy.api.title}</motion.h2>
-          <motion.p className="lede" variants={rise}>{copy.api.lede}</motion.p>
-        </motion.div>
+        <div>
+          <p className="eyebrow" data-rise="sm">{copy.api.eyebrow}</p>
+          <h2 className="h2" data-rise>{copy.api.title}</h2>
+          <p className="lede" data-rise>{copy.api.lede}</p>
+        </div>
 
-        <motion.div className="api" variants={stagger(0.06, 0.1)} {...inViewSoft}>
-          <motion.div className="api__tabs" role="tablist" variants={riseSmall}>
+        <div className="api">
+          <div className="api__tabs" role="tablist" ref={tabs} data-rise="sm">
+            <span className="api__tab-bg" aria-hidden="true" />
             {copy.api.groups.map((item) => (
               <button
                 key={item.id}
@@ -28,57 +63,34 @@ export default function ApiReference() {
                 className={`api__tab${item.id === active ? " api__tab--on" : ""}`}
                 onClick={() => setActive(item.id)}
               >
-                {item.id === active && (
-                  <motion.span
-                    className="api__tab-bg"
-                    layoutId="api-tab"
-                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                  />
-                )}
                 <span className="api__tab-label">{item.label}</span>
                 <span className="api__tab-label api__tab-count mono">{item.routes.length}</span>
               </button>
             ))}
-          </motion.div>
+          </div>
 
-          <motion.div className="api__panel" variants={rise}>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={group.id}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -6 }}
-                transition={{ duration: 0.32, ease }}
-              >
-                <p className="api__blurb">{group.blurb}</p>
-                <ul className="api__routes">
-                  {group.routes.map((route, index) => (
-                    <motion.li
-                      key={index}
-                      className="api__route"
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.35, ease, delay: index * 0.035 }}
-                    >
-                      <div className="api__methods">
-                        {route.methods.map((method) => (
-                          <span
-                            key={method}
-                            className={`api__method api__method--${method.toLowerCase()} mono`}
-                          >
-                            {method}
-                          </span>
-                        ))}
-                      </div>
-                      <code className="api__path mono">{route.path}</code>
-                      <p className="api__desc">{route.body}</p>
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-            </AnimatePresence>
-          </motion.div>
-        </motion.div>
+          <div className="api__panel" data-rise ref={panel}>
+            <p className="api__blurb">{group.blurb}</p>
+            <ul className="api__routes">
+              {group.routes.map((route, index) => (
+                <li key={index} className="api__route">
+                  <div className="api__methods">
+                    {route.methods.map((method) => (
+                      <span
+                        key={method}
+                        className={`api__method api__method--${method.toLowerCase()} mono`}
+                      >
+                        {method}
+                      </span>
+                    ))}
+                  </div>
+                  <code className="api__path mono">{route.path}</code>
+                  <p className="api__desc">{route.body}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,7 +1,5 @@
-import { motion } from "motion/react";
 import { useState } from "react";
 import { useCopy } from "../content";
-import { inViewSoft, rise, riseSmall, stagger } from "../lib/motion";
 import "./Docs.css";
 
 /**
@@ -31,26 +29,26 @@ export default function Docs() {
   return (
     <section className="section" id="docs">
       <div className="shell">
-        <motion.div variants={stagger()} {...inViewSoft}>
-          <motion.p className="eyebrow" variants={riseSmall}>
+        <div>
+          <p className="eyebrow" data-rise="sm">
             {copy.docs.eyebrow}
-          </motion.p>
-          <motion.h2 className="h2" variants={rise}>
+          </p>
+          <h2 className="h2" data-rise>
             {copy.docs.title}
-          </motion.h2>
-          <motion.p className="lede" variants={rise}>
+          </h2>
+          <p className="lede" data-rise>
             {copy.docs.lede}
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         <div className="docs">
-          <motion.div className="docs__prompts" variants={stagger(0.08, 0.1)} {...inViewSoft}>
-            <motion.h3 className="docs__label" variants={riseSmall}>
+          <div className="docs__prompts">
+            <h3 className="docs__label" data-rise="sm">
               {copy.docs.promptsTitle}
-            </motion.h3>
+            </h3>
 
             {copy.docs.prompts.map((prompt, index) => (
-              <motion.article key={index} className="prompt" variants={rise}>
+              <article key={index} className="prompt" data-rise>
                 <header className="prompt__head">
                   <div>
                     <h4>{prompt.title}</h4>
@@ -106,23 +104,23 @@ export default function Docs() {
                   aria-hidden="true"
                   value={prompt.text}
                 />
-              </motion.article>
+              </article>
             ))}
-          </motion.div>
+          </div>
 
-          <motion.aside className="docs__ref" variants={stagger(0.05, 0.15)} {...inViewSoft}>
-            <motion.h3 className="docs__label" variants={riseSmall}>
+          <aside className="docs__ref">
+            <h3 className="docs__label" data-rise="sm">
               {copy.docs.refTitle}
-            </motion.h3>
+            </h3>
             <dl>
               {copy.docs.reference.map((item, i) => (
-                <motion.div key={i} className="docs__row" variants={riseSmall}>
+                <div key={i} className="docs__row" data-rise="sm">
                   <dt className="mono">{item.term}</dt>
                   <dd>{item.desc}</dd>
-                </motion.div>
+                </div>
               ))}
             </dl>
-          </motion.aside>
+          </aside>
         </div>
       </div>
     </section>

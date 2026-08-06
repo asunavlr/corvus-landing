@@ -1,6 +1,4 @@
-import { motion } from "motion/react";
 import { PRICE_USD, REPO_TRIAL, SPONSOR, useCopy } from "../content";
-import { inViewSoft, rise, riseSmall, stagger } from "../lib/motion";
 import "./Pricing.css";
 
 export default function Pricing() {
@@ -9,18 +7,18 @@ export default function Pricing() {
   return (
     <section className="section" id="preco">
       <div className="shell">
-        <motion.div variants={stagger()} {...inViewSoft}>
-          <motion.p className="eyebrow" variants={riseSmall}>
+        <div>
+          <p className="eyebrow" data-rise="sm">
             {copy.pricing.eyebrow}
-          </motion.p>
-          <motion.h2 className="h2" variants={rise}>
+          </p>
+          <h2 className="h2" data-rise>
             {copy.pricing.title}
-          </motion.h2>
-        </motion.div>
+          </h2>
+        </div>
 
-        <motion.div className="price" variants={stagger(0.08, 0.1)} {...inViewSoft}>
+        <div className="price">
           {/* O teste primeiro: é por onde todo mundo entra. */}
-          <motion.div className="price__card price__card--trial" variants={rise}>
+          <div className="price__card price__card--trial" data-rise>
             <p className="price__tag">
               <span className="price__value price__value--trial">{copy.pricing.trial.price}</span>
               <span className="price__per">{copy.pricing.trial.per}</span>
@@ -44,9 +42,9 @@ export default function Pricing() {
             <a className="btn btn--ghost price__cta" href={REPO_TRIAL}>
               {copy.pricing.trial.cta}
             </a>
-          </motion.div>
+          </div>
 
-          <motion.div className="price__card" variants={rise}>
+          <div className="price__card price__card--paid" data-rise>
             <p className="price__tag">
               <span className="price__currency">{copy.pricing.currency}</span>
               <span className="price__value flame">{PRICE_USD}</span>
@@ -85,13 +83,13 @@ export default function Pricing() {
               </svg>
             </a>
             <p className="price__fine">{copy.pricing.ctaNote}</p>
-          </motion.div>
+          </div>
 
-          <motion.aside className="price__keep" variants={rise}>
+          <aside className="price__keep" data-rise>
             <h3>{copy.pricing.keepTitle}</h3>
             <p>{copy.pricing.keepBody}</p>
-          </motion.aside>
-        </motion.div>
+          </aside>
+        </div>
       </div>
     </section>
   );

@@ -1,7 +1,5 @@
-import { motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { useCopy } from "../content";
-import { inViewSoft, rise, riseSmall, stagger } from "../lib/motion";
 import "./Network.css";
 
 /**
@@ -270,8 +268,16 @@ export default function Network() {
     };
 
     const frame = () => {
+      /* Com movimento reduzido o mapa fica parado de verdade: parar só o
+         assentamento não bastava, porque tick é o que faz a faísca correr pelos
+         links e os nós pulsarem. Aí só repintamos enquanto alguém arrasta. */
+      if (reduced) {
+        if (dragRef.current) paint();
+        raf = requestAnimationFrame(frame);
+        return;
+      }
       tick += 1;
-      if (!reduced) settle();
+      settle();
       paint();
       raf = requestAnimationFrame(frame);
     };
@@ -345,19 +351,19 @@ export default function Network() {
   return (
     <section className="section section--tinted" id="rede">
       <div className="shell">
-        <motion.div variants={stagger()} {...inViewSoft}>
-          <motion.p className="eyebrow" variants={riseSmall}>
+        <div>
+          <p className="eyebrow" data-rise="sm">
             {copy.network.eyebrow}
-          </motion.p>
-          <motion.h2 className="h2" variants={rise}>
+          </p>
+          <h2 className="h2" data-rise>
             {copy.network.title}
-          </motion.h2>
-          <motion.p className="lede" variants={rise}>
+          </h2>
+          <p className="lede" data-rise>
             {copy.network.lede}
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
-        <motion.figure className="net" variants={rise} {...inViewSoft}>
+        <figure className="net" data-rise>
           <div className="net__frame">
             <canvas
               ref={canvasRef}
@@ -390,7 +396,26 @@ export default function Network() {
                 : copy.network.hint}
             </span>
           </figcaption>
-        </motion.figure>
+        </figure>
+
+        {/* Canal entre duas instalações — ainda em obra, e o aviso vem antes do texto
+            para ninguém ler a lista achando que já dá para usar. */}
+        <div className="wip" data-rise>
+          <div className="wip__head">
+            <span className="wip__badge">
+              <span className="wip__dot" aria-hidden="true" />
+              {copy.network.wip.badge}
+            </span>
+            <p className="wip__note">{copy.network.wip.note}</p>
+          </div>
+          <h3 className="wip__title" data-rise="sm">{copy.network.deep.title}</h3>
+          <p className="lede" data-rise="sm">{copy.network.deep.lede}</p>
+          <ul className="wip__list">
+            {copy.network.deep.items.map((item, i) => (
+              <li key={i} data-rise="sm">{item}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );
