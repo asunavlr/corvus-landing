@@ -18,7 +18,7 @@ export const pt = {
   nav: {
     links: [
       { href: "#produto", label: "Produto" },
-      { href: "#telas", label: "Telas" },
+      { href: "#atualizacoes", label: "Novidades" },
       { href: "#rede", label: "Rede" },
       { href: "#api", label: "API" },
       { href: "#docs", label: "Docs" },
@@ -28,6 +28,7 @@ export const pt = {
     more: {
       label: "Mais",
       links: [
+        { href: "#telas", label: "Telas" },
         { href: "#recursos", label: "Recursos" },
         { href: "#orquestracao", label: "Orquestração" },
         { href: "#verificacao", label: "Verificação" },
@@ -36,6 +37,7 @@ export const pt = {
         { href: "#registro", label: "Backup e rastro" },
         { href: "#mcp", label: "MCP" },
         { href: "#stack", label: "Stack" },
+        { href: "#feedback", label: "Feedback" },
       ],
     },
     menuLabel: "Abrir menu",
@@ -44,6 +46,7 @@ export const pt = {
 
   hero: {
     badge: "proxy local para o Claude Code CLI",
+    version: "v1.0.3",
     titleA: "Em vez de cinco terminais abertos,",
     titleEm: "um cockpit só.",
     lede:
@@ -425,7 +428,7 @@ export const pt = {
 
   tools: {
     eyebrow: "Servidor MCP",
-    title: "Dezesseis ferramentas que a CLI não tinha",
+    title: "Vinte e quatro ferramentas que a CLI não tinha",
     lede:
       "O proxy sobe seu próprio servidor MCP junto de cada execução e o declara por " +
       "--mcp-config. É por elas que um processo headless consegue te perguntar algo, abrir " +
@@ -433,6 +436,8 @@ export const pt = {
     groups: {
       interaction: "Interação",
       verification: "Verificação",
+      sessions: "Sessões",
+      servers: "Servidores",
       orchestration: "Orquestração",
     },
     badge: "só para maestros",
@@ -441,6 +446,14 @@ export const pt = {
       { name: "aprovar_plano", group: "interaction", body: "Mostra o plano em markdown e só segue depois do aval." },
       { name: "verificar_no_navegador", group: "verification", body: "Abre as páginas num navegador real, faz login e relata o que viu." },
       { name: "verificar_api", group: "verification", body: "Autentica, guarda o token e chama cada endpoint que a tela usa." },
+      { name: "procurar_sessoes", group: "sessions", body: "Acha as conversas que você já rodou no Claude Code e no Codex, com título e pasta." },
+      { name: "importar_sessao", group: "sessions", body: "Traz a conversa para dentro, no projeto que você escolher, mantendo o vínculo com a original." },
+      { name: "listar_servidores", group: "servers", body: "Os servidores cadastrados por SSH e a pasta padrão de cada um." },
+      { name: "rodar_no_servidor", group: "servers", body: "Executa um comando no servidor, como você digitaria no terminal." },
+      { name: "ler_arquivo_do_servidor", group: "servers", body: "Lê um arquivo remoto sem baixar o repositório inteiro." },
+      { name: "escrever_arquivo_no_servidor", group: "servers", body: "Grava o arquivo inteiro, já com a alteração, na máquina remota." },
+      { name: "listar_pasta_do_servidor", group: "servers", body: "O que existe numa pasta do servidor, dizendo o que é pasta e o que é arquivo." },
+      { name: "abrir_porta_do_servidor", group: "servers", body: "Traz para o seu localhost a porta em que a aplicação escuta lá, para poder verificar." },
       { name: "listar_projetos", group: "orchestration", body: "Os projetos disponíveis e as pastas de cada um." },
       { name: "criar_tarefa", group: "orchestration", body: "Cria um agente e dá a ele uma tarefa, com dependências se precisar." },
       { name: "status_tarefas", group: "orchestration", body: "Como está cada tarefa agora, sem esperar por nada." },
@@ -668,6 +681,15 @@ export const pt = {
     tagline: "um cockpit para o Claude Code",
     credit: "feito por Christofer e Kevin",
     version: "v1.0.3",
+    copyright: "© 2026 Corvus · Windows · Claude Code",
+    by: "por",
+    /** Atalhos do rodapé para as seções que não cabem na barra de cima. */
+    quick: [
+      { href: "#atualizacoes", label: "Novidades" },
+      { href: "#docs", label: "Documentação" },
+      { href: "#feedback", label: "Feedback" },
+    ],
+    report: "Reportar problema",
     legal: {
       privacy: { href: "/privacidade.html", label: "Privacidade" },
       terms: { href: "/termos.html", label: "Termos de uso" },

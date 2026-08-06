@@ -3,6 +3,7 @@ import ApiReference from "./components/ApiReference";
 import Desktop from "./components/Desktop";
 import Docs from "./components/Docs";
 import Features from "./components/Features";
+import Feedback from "./components/Feedback";
 import Footer from "./components/Footer";
 import Guard from "./components/Guard";
 import Hero from "./components/Hero";
@@ -15,6 +16,7 @@ import Shots from "./components/Shots";
 import Stack from "./components/Stack";
 import Tools from "./components/Tools";
 import Trail from "./components/Trail";
+import Updates from "./components/Updates";
 import Verify from "./components/Verify";
 import { initReveal } from "./lib/anim";
 import "./components/sections.css";
@@ -31,6 +33,8 @@ export default function App() {
         <Hero />
         <Proxy />
         <Shots />
+        <Updates />
+        <Feedback />
         <Network />
         <Features />
         <Orchestration />

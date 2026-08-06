@@ -1,0 +1,25 @@
+.feedback { background: linear-gradient(180deg, transparent, rgb(255 36 0 / 0.035)); }
+.feedback__layout { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(2.5rem, 7vw, 6rem); align-items: start; }
+.feedback__intro { position: sticky; top: 8rem; }
+.feedback__public { display: inline-block; margin-top: 2rem; color: var(--plume); font-size: 0.7rem; letter-spacing: 0.05em; text-decoration: none; }
+.feedback__public:hover { color: var(--ember); }
+.feedback__form { padding: clamp(1.4rem, 4vw, 2.5rem); border: 1px solid var(--line); border-radius: 12px; background: var(--panel); box-shadow: 0 30px 80px -50px #000; }
+.feedback__field { min-width: 0; padding: 0; margin: 0 0 1.8rem; border: 0; display: grid; gap: 0.75rem; color: var(--fog-2); font-size: 0.82rem; }
+.feedback__field legend { margin-bottom: 0.75rem; }
+.feedback__stars { display: flex; align-items: center; gap: 0.25rem; }
+.feedback__stars button { padding: 0; border: 0; background: none; color: var(--line-2); font-size: 2rem; line-height: 1; cursor: pointer; transition: color 0.18s, transform 0.18s; }
+.feedback__stars button:hover, .feedback__stars button.is-on { color: var(--warn); transform: translateY(-2px); }
+.feedback__stars span { margin-left: 0.7rem; color: var(--fog-3); font-size: 0.65rem; }
+.feedback__choices { display: grid; gap: 0.55rem; }
+.feedback__choices label { padding: 0.9rem 1rem; border: 1px solid var(--line); border-radius: 7px; display: flex; gap: 0.8rem; cursor: pointer; background: var(--ink); transition: border-color 0.2s, background 0.2s; }
+.feedback__choices label.is-selected { border-color: rgb(255 36 0 / 0.55); background: rgb(255 36 0 / 0.06); }
+.feedback__choices input { accent-color: var(--sheen); }
+.feedback__choices span { display: grid; gap: 0.2rem; }
+.feedback__choices strong { color: var(--fog); font-size: 0.82rem; font-weight: 500; }
+.feedback__choices small { color: var(--fog-3); font-size: 0.72rem; }
+.feedback__field textarea, .feedback__field > input { width: 100%; border: 1px solid var(--line-2); border-radius: 7px; background: var(--ink); color: var(--fog); padding: 0.8rem 0.9rem; font: 0.82rem/1.5 var(--sans); resize: vertical; }
+.feedback__field textarea::placeholder { color: var(--fog-3); }
+.feedback__submit { cursor: pointer; }
+.feedback__privacy { margin-top: 0.8rem; color: var(--fog-3); font-size: 0.58rem; }
+@media (max-width: 800px) { .feedback__layout { grid-template-columns: 1fr; } .feedback__intro { position: static; } }
+@media (max-width: 480px) { .feedback__stars button { font-size: 1.7rem; } .feedback__form { border-radius: 8px; } }

@@ -25,16 +25,21 @@ export default function Hero() {
 
       /* Parallax do bando: a foto desce mais devagar que o texto e o véu
          escurece, para o título nunca competir com as asas. */
+      /* O gatilho é o próprio <header>, por referência: dentro de useGSAP com
+         scope, um seletor ".hero" é procurado DENTRO do .hero — e não acha
+         nada, deixando o paralaxe sem gatilho e um aviso no console. */
+      const hero = scope.current!;
+
       gsap.to(".hero__flock", {
         y: 160,
         scale: 1.12,
         ease: "none",
-        scrollTrigger: { trigger: ".hero", start: "top top", end: "+=800", scrub: 0.6 },
+        scrollTrigger: { trigger: hero, start: "top top", end: "+=800", scrub: 0.6 },
       });
       gsap.fromTo(".hero__veil", { opacity: 0 }, {
         opacity: 0.7,
         ease: "none",
-        scrollTrigger: { trigger: ".hero", start: "top top", end: "+=600", scrub: 0.6 },
+        scrollTrigger: { trigger: hero, start: "top top", end: "+=600", scrub: 0.6 },
       });
 
       /* Entrada: a primeira linha do título palavra por palavra. A segunda é o
@@ -70,6 +75,7 @@ export default function Hero() {
         <div className="hero__badge">
           <span className="hero__pulse" aria-hidden="true" />
           <span className="mono">{copy.hero.badge}</span>
+          <span className="hero__version mono">{copy.hero.version}</span>
         </div>
 
         <h1 className="hero__title">

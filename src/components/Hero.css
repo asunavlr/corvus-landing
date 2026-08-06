@@ -294,3 +294,11 @@
     font-size: 0.7rem;
   }
 }
+
+.hero__version {
+  margin-left: 0.15rem;
+  padding-left: 0.65rem;
+  border-left: 1px solid var(--line-2);
+  color: var(--plume);
+  letter-spacing: 0.08em;
+}

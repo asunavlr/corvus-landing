@@ -1,10 +1,10 @@
 import { useCopy } from "../content";
 import SpotlightCard from "./rb/SpotlightCard";
 
-const GROUPS = ["interaction", "verification", "orchestration"] as const;
+const GROUPS = ["interaction", "verification", "sessions", "servers", "orchestration"] as const;
 
 /**
- * As 16 ferramentas que o servidor MCP do proxy injeta em toda execução. As de
+ * As 24 ferramentas que o servidor MCP do proxy injeta em toda execução. As de
  * orquestração só são entregues a quem foi marcado como maestro.
  */
 export default function Tools() {

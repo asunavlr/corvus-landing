@@ -29,8 +29,14 @@ if (!reduced && typeof document !== "undefined") {
 export function initReveal() {
   if (reduced) return () => {};
 
-  const ctx = gsap.context(() => {
-    ScrollTrigger.batch("[data-rise]", {
+  let triggers: ScrollTrigger[] = [];
+
+  /* Registrar de novo, não do zero: kill(false) tira o gatilho antigo sem
+     desfazer o que ele já revelou. Quem já apareceu tem opacity no style e
+     continua visível; quem é novo entra na fila. */
+  const build = () => {
+    triggers.forEach((t) => t.kill(false));
+    triggers = ScrollTrigger.batch("[data-rise]", {
       start: "top 90%",
       once: true,
       onEnter: (batch) =>
@@ -43,15 +49,34 @@ export function initReveal() {
           overwrite: true,
         }),
     });
+  };
+
+  build();
+
+  /* Trocar de idioma troca o texto, mas também cria e destrói elementos —
+     listas de tamanho diferente entre pt e en, blocos que só existem num dos
+     dois. O ScrollTrigger.batch só conhece o que existia quando foi montado:
+     sem reavaliar, um cartão criado depois fica no estado escondido do CSS
+     para sempre. Foi assim que os cartões sumiam ao trocar de idioma. */
+  let pending = 0;
+  const observer = new MutationObserver(() => {
+    window.clearTimeout(pending);
+    pending = window.setTimeout(() => {
+      build();
+      ScrollTrigger.refresh();
+    }, 120);
   });
+  observer.observe(document.body, { childList: true, subtree: true });
 
   // As imagens chegam depois do primeiro cálculo e empurram a página inteira.
   const onLoad = () => ScrollTrigger.refresh();
   window.addEventListener("load", onLoad);
 
   return () => {
+    window.clearTimeout(pending);
+    observer.disconnect();
     window.removeEventListener("load", onLoad);
-    ctx.revert();
+    triggers.forEach((t) => t.kill(false));
   };
 }
 

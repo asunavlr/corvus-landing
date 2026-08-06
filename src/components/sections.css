@@ -969,6 +969,7 @@ pre code {
   color: var(--fog-3);
 }
 
+
 .footer__legal {
   display: flex;
   flex-wrap: wrap;
@@ -985,6 +986,28 @@ pre code {
 .footer__legal a:hover {
   color: var(--fog);
 }
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.5rem;
+  margin-top: clamp(3rem, 7vw, 5rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.68rem;
+}
+
+.footer__links a,
+.footer__credit a {
+  color: var(--fog-3);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer__links a:hover,
+.footer__credit a:hover { color: var(--ember); }
+
+.footer__copyright { margin-top: 0.35rem; color: var(--fog-3); font-size: 0.62rem; }
 
 /* ------------------------------ idioma (nav) ------------------------------ */
 
@@ -1236,6 +1259,8 @@ pre code {
 
 .footer__bar {
   flex-wrap: wrap;
+  margin-top: 0;
+  border-top: 0;
 }
 
 .footer__credit {

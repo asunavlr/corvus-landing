@@ -7,7 +7,7 @@ export const en: Copy = {
   nav: {
     links: [
       { href: "#produto", label: "Product" },
-      { href: "#telas", label: "Screens" },
+      { href: "#atualizacoes", label: "Updates" },
       { href: "#rede", label: "Network" },
       { href: "#api", label: "API" },
       { href: "#docs", label: "Docs" },
@@ -16,6 +16,7 @@ export const en: Copy = {
     more: {
       label: "More",
       links: [
+        { href: "#telas", label: "Screens" },
         { href: "#recursos", label: "Features" },
         { href: "#orquestracao", label: "Orchestration" },
         { href: "#verificacao", label: "Verification" },
@@ -24,6 +25,7 @@ export const en: Copy = {
         { href: "#registro", label: "Backup & trail" },
         { href: "#mcp", label: "MCP" },
         { href: "#stack", label: "Stack" },
+        { href: "#feedback", label: "Feedback" },
       ],
     },
     menuLabel: "Open menu",
@@ -31,6 +33,7 @@ export const en: Copy = {
   },
 
   hero: {
+    version: "v1.0.3",
     badge: "local proxy for the Claude Code CLI",
     titleA: "Five terminals open, or",
     titleEm: "one cockpit.",
@@ -412,7 +415,7 @@ export const en: Copy = {
 
   tools: {
     eyebrow: "MCP server",
-    title: "Sixteen tools the CLI didn't have",
+    title: "Twenty-four tools the CLI didn't have",
     lede:
       "The proxy starts its own MCP server alongside every run and declares it through " +
       "--mcp-config. These are how a headless process can ask you something, open a browser, " +
@@ -420,6 +423,8 @@ export const en: Copy = {
     groups: {
       interaction: "Interaction",
       verification: "Verification",
+      sessions: "Sessions",
+      servers: "Servers",
       orchestration: "Orchestration",
     },
     badge: "conductors only",
@@ -428,6 +433,14 @@ export const en: Copy = {
       { name: "aprovar_plano", group: "interaction", body: "Shows the plan in markdown and only proceeds once you approve." },
       { name: "verificar_no_navegador", group: "verification", body: "Opens the pages in a real browser, logs in, and reports what it saw." },
       { name: "verificar_api", group: "verification", body: "Authenticates, keeps the token and calls every endpoint the screen uses." },
+      { name: "procurar_sessoes", group: "sessions", body: "Finds the conversations you already ran in Claude Code and Codex, with title and folder." },
+      { name: "importar_sessao", group: "sessions", body: "Brings the conversation in, into the project you pick, keeping the link to the original." },
+      { name: "listar_servidores", group: "servers", body: "The servers registered over SSH and each one's default folder." },
+      { name: "rodar_no_servidor", group: "servers", body: "Runs a command on the server, exactly as you would type it in the terminal." },
+      { name: "ler_arquivo_do_servidor", group: "servers", body: "Reads a remote file without pulling the whole repository down." },
+      { name: "escrever_arquivo_no_servidor", group: "servers", body: "Writes the whole file, already changed, on the remote machine." },
+      { name: "listar_pasta_do_servidor", group: "servers", body: "What lives in a server folder, saying what is a folder and what is a file." },
+      { name: "abrir_porta_do_servidor", group: "servers", body: "Forwards the port the app listens on there to your localhost, so it can be verified." },
       { name: "listar_projetos", group: "orchestration", body: "The available projects and each one's folder." },
       { name: "criar_tarefa", group: "orchestration", body: "Creates an agent and hands it one task, with dependencies if needed." },
       { name: "status_tarefas", group: "orchestration", body: "Where each task stands right now, without waiting for anything." },
@@ -654,6 +667,14 @@ export const en: Copy = {
     tagline: "a cockpit for Claude Code",
     credit: "made by Christofer and Kevin",
     version: "v1.0.3",
+    copyright: "© 2026 Corvus · Windows · Claude Code",
+    by: "by",
+    quick: [
+      { href: "#atualizacoes", label: "Updates" },
+      { href: "#docs", label: "Documentation" },
+      { href: "#feedback", label: "Feedback" },
+    ],
+    report: "Report an issue",
     legal: {
       privacy: { href: "/privacy.html", label: "Privacy" },
       terms: { href: "/terms.html", label: "Terms of use" },

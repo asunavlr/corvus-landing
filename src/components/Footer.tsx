@@ -26,13 +26,23 @@ export default function Footer() {
           </a>
         </div>
 
-        <div className="footer__bar">
-          <p className="mono">Corvus · {copy.footer.tagline}</p>
-          <a className="mono footer__repo" href={REPO_TRIAL}>
-            github.com/asunavlr/corvus-trial
+        <div className="footer__links mono">
+          {copy.footer.quick.map((link) => (
+            <a href={link.href} key={link.href}>{link.label}</a>
+          ))}
+          <a href={`${REPO_TRIAL}/issues/new`} target="_blank" rel="noreferrer">
+            {copy.footer.report} ↗
           </a>
+        </div>
+
+        <div className="footer__bar">
+          <div>
+            <p className="mono">Corvus · {copy.footer.tagline}</p>
+            <p className="mono footer__copyright">{copy.footer.copyright}</p>
+          </div>
+          <a className="mono footer__repo" href={REPO_TRIAL}>github.com/asunavlr/corvus-trial</a>
           <p className="mono footer__credit">
-            {copy.footer.credit}
+            {copy.footer.by} <a href="https://github.com/chzin777" target="_blank" rel="noreferrer">Christofer</a> &amp; <a href="https://github.com/asunavlr" target="_blank" rel="noreferrer">Kevin</a>
             <span className="footer__version">{copy.footer.version}</span>
           </p>
         </div>
